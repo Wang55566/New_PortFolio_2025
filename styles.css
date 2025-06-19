@@ -48,6 +48,7 @@ nav {
   align-items: center;
   gap: 20px;
   z-index: 2000;
+  text-wrap: nowrap;
 }
 
 .music-button {
@@ -113,14 +114,14 @@ nav button:hover::after {
 
 .menu-buttons {
   position: absolute;
-  right: 40px;
+  right: 60px;
   top: 15px;
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-#about-section {
+#about-me-section {
   background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   padding-top: 60px;
   display: flex;
@@ -302,6 +303,7 @@ nav button:hover::after {
   animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 50px;
+  padding: 0 20px;
 }
 
 .music-button {
@@ -326,10 +328,9 @@ nav button:hover::after {
 #home-section {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1e3a8a 100%);
 }
 
-/* Particles Container */
 .particles-container {
   position: absolute;
   top: 0;
@@ -337,13 +338,10 @@ nav button:hover::after {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
 }
 
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   animation: float 6s infinite ease-in-out;
@@ -354,7 +352,7 @@ nav button:hover::after {
   50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
 }
 
-.home-section-title {
+.home-section-main {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -397,10 +395,11 @@ nav button:hover::after {
 }
 
 .interactive-buttons button {
-  width: 25%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 200px;
 }
 
 .action-button {
@@ -435,18 +434,18 @@ nav button:hover::after {
   left: 100%;
 }
 
-.primary-btn {
+.about-me-btn {
   background: linear-gradient(135deg, #ff6b6b, #ee5a24);
   color: white;
   box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
 }
 
-.primary-btn:hover {
+.about-me-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
 }
 
-.secondary-btn {
+.work-btn {
   background: linear-gradient(135deg, #00d4ff, #0099cc);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -454,7 +453,7 @@ nav button:hover::after {
   box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
 }
 
-.secondary-btn:hover {
+.work-btn:hover {
   background: linear-gradient(135deg, #00b8e6, #0088b3);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-3px);
@@ -526,5 +525,137 @@ nav button:hover::after {
   }
   60% {
     transform: translateY(-5px);
+  }
+}
+
+/* Introduction Card */
+.intro-card {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 280px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeInRight 1s ease-out 2s forwards;
+  z-index: 10;
+}
+
+.intro-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.intro-header i {
+  font-size: 2.5rem;
+  color: #4ecdc4;
+  text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.intro-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.intro-content p {
+  font-family: 'Pacifico', cursive;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.intro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .intro-card {
+    right: 3%;
+    width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-card {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 90%;
+    max-width: 400px;
+    margin: 30px auto 0;
+    animation: fadeInUp 1s ease-out 2s forwards;
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 655px) {
+  nav {
+    height: 120px;
+  }
+  .menu-buttons {
+    top: 70%;
+    left: 50%;
+    right: unset;
+    transform: translate(-50%, -50%);
+  }
+
+  .title-section {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

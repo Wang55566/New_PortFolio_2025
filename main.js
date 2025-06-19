@@ -8,7 +8,7 @@ let scene, camera, renderer, controls;
 // Particle system
 function createParticles() {
   const particlesContainer = document.getElementById('particles');
-  const particleCount = 50;
+  const particleCount = 100;
   
   for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement('div');
@@ -182,7 +182,7 @@ window.scrollToSection = scrollToSection;
 
 initThreeJS();
 
-const sectionIds = ['home-section', 'about-section', 'work-section', 'contact-section'];
+const sectionIds = ['home-section', 'about-me-section', 'work-section', 'contact-section'];
 
 function scrollToNextSection() {
   // Find the section closest to the top
