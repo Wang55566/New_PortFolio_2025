@@ -293,78 +293,15 @@ nav button:hover::after {
   font-size: 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .billboard {
-    padding: 25px;
-    margin: 10px;
-  }
-  
-  .billboard-title {
-    font-size: 2rem;
-  }
-  
-  .content-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-  
-  .card-icon {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .card-icon i {
-    font-size: 1.2rem;
-  }
-  
-  .card-text h3 {
-    font-size: 1.1rem;
-  }
-  
-  .card-text p {
-    font-size: 0.9rem;
-  }
-}
-
-.home-section-title {
-  position: absolute;
-  top: 150px;
-  right: 50%;
-  transform: translate(50%, -50%);
-}
-
 #welcome-text {
   font-family: 'Pacifico', 'Playfair Display', cursive, serif;
   font-size: 45px;
   color: #e52e71;
   font-weight: 700;
-}
-
-.rotate-button {
-  bottom: 80px;
-  font-size: 28px;
-  background-color: rgba(255, 255, 255, 0.3);
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-}
-
-.rotate-button:hover::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  color:#2c3e50;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.rotate-button:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  border-right: 3px solid #ffd700;
+  animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px;
 }
 
 .music-button {
@@ -423,25 +360,8 @@ nav button:hover::after {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 10;
   width: 100%;
   max-width: 800px;
-  padding: 0 20px;
-}
-
-/* Typing Effect */
-.typing-text {
-  font-family: 'Pacifico', 'Playfair Display', cursive, serif;
-  font-size: 45px;
-  color: #ffd700;
-  font-weight: 700;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid #ffd700;
-  animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes typing {
@@ -452,15 +372,6 @@ nav button:hover::after {
 @keyframes blink-caret {
   from, to { border-color: transparent; }
   50% { border-color: #ffffff; }
-}
-
-.subtitle-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out 2s forwards;
 }
 
 @keyframes fadeInUp {
@@ -477,11 +388,19 @@ nav button:hover::after {
 /* Interactive Buttons */
 .interactive-buttons {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
   margin-bottom: 40px;
   opacity: 0;
   animation: fadeInUp 1s ease-out 3s forwards;
+}
+
+.interactive-buttons button {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .action-button {
@@ -528,54 +447,37 @@ nav button:hover::after {
 }
 
 .secondary-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
 }
 
 .secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #00b8e6, #0088b3);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
 }
 
-/* Animation Controls */
-.animation-controls {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out 4s forwards;
-}
-
-.rotate-button {
-  font-size: 28px;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 12px 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  border: none;
+.contact-btn {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
   color: white;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
 }
 
-.rotate-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+.contact-btn:hover {
+  background: linear-gradient(135deg, #3bce73, #1ea54a);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(74, 222, 128, 0.4);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  right: 5%;
   opacity: 0;
   animation: fadeInUp 1s ease-out 5s forwards;
 }
@@ -583,23 +485,16 @@ nav button:hover::after {
 .scroll-button {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.5);
   font-family: 'Playfair Display', serif;
   font-size: 14px;
   cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 25px;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
 }
 
 .scroll-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
-  color: rgba(255, 255, 255, 1);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
 .scroll-button:active {
@@ -613,12 +508,12 @@ nav button:hover::after {
 
 .scroll-arrow i {
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease;
 }
 
 .scroll-button:hover .scroll-arrow i {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 0.8);
   transform: translateY(2px);
 }
 
@@ -631,35 +526,5 @@ nav button:hover::after {
   }
   60% {
     transform: translateY(-5px);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .typing-text {
-    font-size: 32px;
-  }
-  
-  .subtitle-text {
-    font-size: 18px;
-  }
-  
-  .interactive-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .action-button {
-    width: 200px;
-    justify-content: center;
-  }
-  
-  .animation-controls {
-    gap: 10px;
-  }
-  
-  .rotate-button {
-    font-size: 24px;
-    padding: 10px 16px;
   }
 }

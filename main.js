@@ -85,16 +85,6 @@ function initThreeJS() {
     controls.autoRotateSpeed = 1.0;
     window.controls = controls;
 
-    // Ensure correct button is shown on load
-    if (controls.autoRotate) {
-      const stopBtn = document.querySelector('.stop-rotation-button');
-      const startBtn = document.querySelector('.start-rotation-button');
-      if (stopBtn && startBtn) {
-        stopBtn.style.display = '';
-        startBtn.style.display = 'none';
-      }
-    }
-
     // Add lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
@@ -243,30 +233,6 @@ window.addEventListener('wheel', (e) => {
     scrollToPrevSection();
   }
 }, { passive: false });
-
-window.stopRotation = function() {
-  if (window.controls) {
-    window.controls.autoRotate = false;
-    const stopBtn = document.querySelector('.stop-rotation-button');
-    const startBtn = document.querySelector('.start-rotation-button');
-    if (stopBtn && startBtn) {
-      stopBtn.style.display = 'none';
-      startBtn.style.display = '';
-    }
-  }
-};
-
-window.startRotation = function() {
-  if (window.controls) {
-    window.controls.autoRotate = true;
-    const stopBtn = document.querySelector('.stop-rotation-button');
-    const startBtn = document.querySelector('.start-rotation-button');
-    if (stopBtn && startBtn) {
-      stopBtn.style.display = '';
-      startBtn.style.display = 'none';
-    }
-  }
-};
 
 // Music functionality
 let isMusicPlaying = false;
