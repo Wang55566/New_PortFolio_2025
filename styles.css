@@ -199,14 +199,13 @@ nav button:hover::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .home-section-main-flex {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 100px;
   width: 100%;
   max-width: 992px;
 }
@@ -254,7 +253,6 @@ nav button:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 200px;
 }
 
 .action-button {
@@ -417,7 +415,7 @@ nav button:hover::after {
   text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
   font-size: 18px;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .intro-content p {
@@ -429,8 +427,7 @@ nav button:hover::after {
   margin-bottom: 15px;
   font-family: 'Playfair Display', serif;
   text-align: left;
-  margin-bottom: 30px;
-  
+  margin-bottom: 30px;  
 }
 
 .intro-tags {
@@ -463,5 +460,66 @@ nav button:hover::after {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  nav {
+    height: 100px;
+  }
+  
+  .title-section {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .menu-buttons {
+    top: 60%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  #welcome-text {
+    font-size: 32px;
+  }
+  .home-section-main {
+    top: 15%;
+  }
+  .home-section-main-flex {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .intro-header {
+    font-size: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .intro-header h3 {
+    font-size: 20px;
+  }
+  
+  .intro-content h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .interactive-buttons {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .interactive-buttons button {
+    width: 100px;
+  }
+  
+  .interactive-buttons button span {
+    display: none;
   }
 }
