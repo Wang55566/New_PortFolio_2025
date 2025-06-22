@@ -286,3 +286,10 @@ document.addEventListener('DOMContentLoaded', function() {
   createParticles();
   initTypingEffect();
 });
+
+function toggleIntroCard() {
+  const introCard = document.querySelector('.intro-card');
+  introCard.style.display = introCard.style.display === 'none' ? 'block' : 'none';
+}
+
+window.toggleIntroCard = toggleIntroCard;
