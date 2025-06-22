@@ -145,34 +145,6 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-const aboutData = [
-    {
-        title: "University of Hawaii at Hilo",
-        date: "2012-2016",
-        description: "Communication B.A.",
-    },
-    {
-        title: "Customer Services Host",
-        date: "2016-2019",
-        description: "Alola Moana Center",
-    },
-    {
-        title: "App Academy",
-        date: "2022-2023",
-        description: "Software Engineer Program",
-    },
-    {
-        title: "Hackathon Event",
-        date: "2023",
-        description: "Priyada Studio's Website",
-    },
-    {
-        title: "Volunteer Software Engineer",
-        date: "2023",
-        description: "Democracy Lab",
-    },
-];
-
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
   section.scrollIntoView({ behavior: 'smooth' });
@@ -190,12 +162,12 @@ function scrollToNextSection() {
   for (let i = 0; i < sectionIds.length; i++) {
     const section = document.getElementById(sectionIds[i]);
     const rect = section.getBoundingClientRect();
-    if (rect.top >= -10) { // Section is at or just above the top
+    if (rect.top >= -10) {
       currentIdx = i;
       break;
     }
   }
-  // Scroll to the next section if it exists
+  
   if (currentIdx < sectionIds.length - 1) {
     const nextSection = document.getElementById(sectionIds[currentIdx + 1]);
     if (nextSection) {

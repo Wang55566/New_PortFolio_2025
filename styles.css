@@ -13,6 +13,7 @@ html, body {
   background: transparent;
 }
 
+/* Navbar */
 nav {
   position: fixed;
   top: 0;
@@ -121,14 +122,7 @@ nav button:hover::after {
   gap: 30px;
 }
 
-#about-me-section {
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  padding-top: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Home Page Welcome Text */
 #welcome-text {
   font-family: 'Pacifico', 'Playfair Display', cursive, serif;
   font-size: 45px;
@@ -143,6 +137,7 @@ nav button:hover::after {
   animation-fill-mode: forwards;
 }
 
+/* Music */
 .music-button {
   transition: all 0.3s ease;
 }
@@ -162,6 +157,7 @@ nav button:hover::after {
   display: none;
 }
 
+/* Home Page Background */
 #home-section {
   position: relative;
   background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1e3a8a 100%);
@@ -188,6 +184,7 @@ nav button:hover::after {
   50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
 }
 
+/* Home Page Main */
 .home-section-main {
   position: absolute;
   top: 15%;
@@ -239,6 +236,7 @@ nav button:hover::after {
   }
 }
 
+/* Home Page Interactive Buttons */
 .interactive-buttons {
   display: flex;
   flex-direction: column;
@@ -321,6 +319,7 @@ nav button:hover::after {
   box-shadow: 0 12px 35px rgba(74, 222, 128, 0.4);
 }
 
+/* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -374,6 +373,7 @@ nav button:hover::after {
   }
 }
 
+/* Home Page Intro Card */
 .intro-card {
   position: relative;
   width: 350px;
@@ -463,6 +463,16 @@ nav button:hover::after {
   }
 }
 
+/* About Me Page */
+#about-me-section {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home Page Media Queries */
 @media screen and (max-width: 650px) {
   nav {
     height: 100px;
