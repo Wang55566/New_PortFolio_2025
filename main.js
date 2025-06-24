@@ -253,10 +253,82 @@ audioPlayer.addEventListener('error', function() {
   isMusicPlaying = false;
 });
 
-// Initialize home page enhancements
+// Skill category state management
+let currentSkillCategory = 'frontend'; // default category
+let currentDetailCategory = 'background'; // default detail category
+
+function showSkills(category) {
+  // Update current category
+  currentSkillCategory = category;
+  
+  // Hide all skill categories
+  const skillCategories = document.querySelectorAll('.skill-category');
+  skillCategories.forEach(category => {
+    category.style.display = 'none';
+  });
+  
+  // Show the selected category
+  const selectedCategory = document.querySelector(`.skill-category[data-category="${category}"]`);
+  if (selectedCategory) {
+    selectedCategory.style.display = 'block';
+  }
+  
+  // Update button states
+  const categoryButtons = document.querySelectorAll('.skill-category-button');
+  categoryButtons.forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  // Add active class to clicked button
+  const activeButton = document.querySelector(`[onclick="showSkills('${category}')"]`);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
+
+function showDetails(category) {
+  // Update current category
+  currentDetailCategory = category;
+  
+  // Hide all detail categories
+  const detailCategories = document.querySelectorAll('.detail-category');
+  detailCategories.forEach(category => {
+    category.style.display = 'none';
+  });
+  
+  // Show the selected category
+  const selectedCategory = document.querySelector(`.detail-category[data-category="${category}"]`);
+  if (selectedCategory) {
+    selectedCategory.style.display = 'block';
+  }
+  
+  // Update button states
+  const categoryButtons = document.querySelectorAll('.detail-category-button');
+  categoryButtons.forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  // Add active class to clicked button
+  const activeButton = document.querySelector(`[onclick="showDetails('${category}')"]`);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
+
+// Make functions globally accessible
+window.showSkills = showSkills;
+window.showDetails = showDetails;
+
+// Initialize skills display on page load
 document.addEventListener('DOMContentLoaded', function() {
   createParticles();
   initTypingEffect();
+  
+  // Initialize skills with default category
+  showSkills(currentSkillCategory);
+  
+  // Initialize details with default category
+  showDetails(currentDetailCategory);
 });
 
 function toggleIntroCard() {
@@ -265,3 +337,4 @@ function toggleIntroCard() {
 }
 
 window.toggleIntroCard = toggleIntroCard;
+
