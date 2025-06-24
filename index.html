@@ -527,40 +527,32 @@
       <section id="contact-section">
         <div class="contact-header">
           <h1 class="contact-title">Get In Touch</h1>
-          <p class="contact-subtitle">Let's connect and grow together!</p>
+          <p class="contact-subtitle">Reach Out Anytime !!</p>
         </div>
 
-        <div class="contact-content">
-          <div class="contact-card">
-            <div class="card-header">
-              <i class="fas fa-envelope"></i>
-              <h3>Contact Information</h3>
-            </div>
-            <div class="card-content">
-              <div class="contact-info">
-                <div class="contact-item">
+        <div class="contact-flex">
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-info-title">Contact Information</div>
+              <div class="contact-info-content">
+                <div class="contact-info-item">
                   <i class="fas fa-envelope"></i>
                   <span>wang6@hawaii.edi</span>
                 </div>
-                <div class="contact-item">
+                <div class="contact-info-item">
                   <i class="fas fa-phone"></i>
                   <span>(415) 390-7212 (USA)</span>
                 </div>
-                <div class="contact-item">
+                <div class="contact-info-item">
                   <i class="fas fa-phone"></i>
                   <span>0910-500-172 (Taiwan)</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="contact-card">
-            <div class="card-header">
-              <i class="fas fa-share-alt"></i>
-              <h3>Social Links</h3>
-            </div>
-            <div class="card-content">
-              <div class="social-grid">
+            <div class="contact-social">
+              <div class="contact-social-title">Links</div>
+              <div class="contact-social-content">
                 <a
                   href="https://github.com/yourusername"
                   target="_blank"
@@ -571,13 +563,13 @@
                   <small>View my projects</small>
                 </a>
                 <a
-                  href="https://instagram.com/yourusername"
+                  href="https://linkedin.com/in/yourusername"
                   target="_blank"
                   class="social-card"
                 >
-                  <i class="fab fa-instagram"></i>
-                  <span>Instagram</span>
-                  <small>Follow my journey</small>
+                  <i class="fab fa-linkedin"></i>
+                  <span>LinkedIn</span>
+                  <small>Professional profile</small>
                 </a>
                 <a
                   href="/assets/resume.pdf"
@@ -588,18 +580,79 @@
                   <span>Resume</span>
                   <small>Download PDF</small>
                 </a>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  class="social-card"
-                >
-                  <i class="fab fa-linkedin"></i>
-                  <span>LinkedIn</span>
-                  <small>Professional profile</small>
-                </a>
               </div>
             </div>
           </div>
+
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm">
+            <div class="form-header">
+              <i class="fas fa-paper-plane"></i>
+              <h3>Send Me a Message</h3>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i>
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i>
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">
+                <i class="fas fa-phone"></i>
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">
+                <i class="fas fa-comment"></i>
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project or inquiry..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
         </div>
       </section>
     </div>
