@@ -159,65 +159,67 @@ window.scrollToSection = scrollToSection;
 
 initThreeJS();
 
-const sectionIds = [
-  "home-section",
-  "about-me-section",
-  "work-section",
-  "contact-section",
-];
+// Scroll to next and previous section functions
+// const sectionIds = [
+//   "home-section",
+//   "about-me-section",
+//   "work-section",
+//   "contact-section",
+// ];
 
-function scrollToNextSection() {
-  // Find the section closest to the top
-  let currentIdx = 0;
-  for (let i = 0; i < sectionIds.length; i++) {
-    const section = document.getElementById(sectionIds[i]);
-    const rect = section.getBoundingClientRect();
-    if (rect.top >= -10) {
-      currentIdx = i;
-      break;
-    }
-  }
+// function scrollToNextSection() {
+//   // Find the section closest to the top
+//   let currentIdx = 0;
+//   for (let i = 0; i < sectionIds.length; i++) {
+//     const section = document.getElementById(sectionIds[i]);
+//     const rect = section.getBoundingClientRect();
+//     if (rect.top >= -10) {
+//       currentIdx = i;
+//       break;
+//     }
+//   }
 
-  if (currentIdx < sectionIds.length - 1) {
-    const nextSection = document.getElementById(sectionIds[currentIdx + 1]);
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-}
+//   if (currentIdx < sectionIds.length - 1) {
+//     const nextSection = document.getElementById(sectionIds[currentIdx + 1]);
+//     if (nextSection) {
+//       nextSection.scrollIntoView({ behavior: "smooth" });
+//     }
+//   }
+// }
 
-function scrollToPrevSection() {
-  let currentIdx = 0;
-  for (let i = 0; i < sectionIds.length; i++) {
-    const section = document.getElementById(sectionIds[i]);
-    const rect = section.getBoundingClientRect();
-    if (rect.top >= -10) {
-      currentIdx = i;
-      break;
-    }
-  }
-  if (currentIdx > 0) {
-    const prevSection = document.getElementById(sectionIds[currentIdx - 1]);
-    if (prevSection) {
-      prevSection.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-}
+// function scrollToPrevSection() {
+//   let currentIdx = 0;
+//   for (let i = 0; i < sectionIds.length; i++) {
+//     const section = document.getElementById(sectionIds[i]);
+//     const rect = section.getBoundingClientRect();
+//     if (rect.top >= -10) {
+//       currentIdx = i;
+//       break;
+//     }
 
-window.scrollToNextSection = scrollToNextSection;
-window.scrollToPrevSection = scrollToPrevSection;
+//   }
+//   if (currentIdx > 0) {
+//     const prevSection = document.getElementById(sectionIds[currentIdx - 1]);
+//     if (prevSection) {
+//       prevSection.scrollIntoView({ behavior: "smooth" });
+//     }
+//   }
+// }
 
-window.addEventListener(
-  "wheel",
-  (e) => {
-    if (e.deltaY > 0) {
-      scrollToNextSection();
-    } else if (e.deltaY < 0) {
-      scrollToPrevSection();
-    }
-  },
-  { passive: false }
-);
+// window.scrollToNextSection = scrollToNextSection;
+// window.scrollToPrevSection = scrollToPrevSection;
+
+// window.addEventListener(
+//   "wheel",
+//   (e) => {
+//     if (e.deltaY > 0) {
+//       scrollToNextSection();
+//     } else if (e.deltaY < 0) {
+//       scrollToPrevSection();
+//     }
+//   },
+//   { passive: false }
+// );
 
 // Music functionality
 let isMusicPlaying = false;

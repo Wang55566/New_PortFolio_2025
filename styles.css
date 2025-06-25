@@ -623,6 +623,7 @@ nav button:hover::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
+  align-items: stretch;
 }
 
 .content-card {
@@ -632,8 +633,17 @@ nav button:hover::after {
   padding: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  height: fit-content;
+  height: 100%;
   min-height: 575px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .card-header {
@@ -741,16 +751,19 @@ nav button:hover::after {
   background: rgba(255, 215, 0, 0.1);
   border-radius: 15px;
   border-left: 4px solid #ffd700;
-  margin-bottom: 10px;
-  line-height: 30px;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+  line-height: 28px;
+  box-shadow: 0 2px 2px 1px rgba(255, 215, 0, 0.1);
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .story-intro:hover {
   background: rgba(255, 215, 0, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+}
+
+.story-intro:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .detail-category {
@@ -759,13 +772,17 @@ nav button:hover::after {
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   min-height: 330px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .detail-category p {
   color: #ceccde;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   font-size: 16px;
-  line-height: 32px;
+  line-height: 28px;
+  flex: 1;
 }
 
 /* About Me Interests */
@@ -977,7 +994,7 @@ nav button:hover::after {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
-  cursor: pointer;
+  cursor: default;
 }
 
 .contact-info-item:hover {
@@ -1320,6 +1337,15 @@ nav button:hover::after {
   }
 }
 
+@media screen and (max-width: 789px) {
+  .content-card, .detail-category {
+    min-height: unset;
+  }
+  .story-intro:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
 @media screen and (max-width: 800px) {
   #welcome-text {
     font-size: 32px;
@@ -1329,7 +1355,7 @@ nav button:hover::after {
   }
   .home-section-main-flex {
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
   }
 
   .intro-header {
