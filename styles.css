@@ -623,7 +623,7 @@ nav button:hover::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .content-card {
@@ -634,7 +634,6 @@ nav button:hover::after {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   height: 100%;
-  min-height: 575px;
   display: flex;
   flex-direction: column;
 }
@@ -643,7 +642,6 @@ nav button:hover::after {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .card-header {
@@ -1259,78 +1257,78 @@ nav button:hover::after {
     min-height: auto;
     padding-bottom: 40px;
   }
-  
+
   .contact-title {
     font-size: 32px;
     margin-bottom: 10px;
   }
-  
+
   .contact-subtitle {
     font-size: 18px;
     position: static;
     margin-top: 10px;
     animation: none;
   }
-  
+
   .contact-flex {
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 15px;
   }
-  
+
   .contact-content {
     width: 100%;
     max-width: 350px;
     padding: 25px;
   }
-  
+
   .contact-form {
     width: 100%;
     max-width: 350px;
     padding: 25px;
   }
-  
+
   .form-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .form-group input,
   .form-group textarea {
     padding: 12px 15px;
     font-size: 14px;
   }
-  
+
   .form-header h3 {
     font-size: 18px;
   }
-  
+
   .form-group label {
     font-size: 14px;
   }
-  
+
   .form-group textarea {
     line-height: 18px;
     height: 100px;
     padding: 10px 15px;
   }
-  
+
   .submit-btn {
     padding: 10px 15px;
     font-size: 16px;
   }
-  
+
   .contact-info-item,
   .contact-social-content a {
     padding: 10px 12px;
   }
-  
+
   .contact-info-item span,
   .contact-social-content a span {
     font-size: 16px;
   }
-  
+
   .contact-info-title,
   .contact-social-title {
     font-size: 20px;
@@ -1338,11 +1336,16 @@ nav button:hover::after {
 }
 
 @media screen and (max-width: 789px) {
-  .content-card, .detail-category {
+  .content-card,
+  .detail-category {
     min-height: unset;
+    height: fit-content;
   }
   .story-intro:not(:last-child) {
     margin-bottom: 20px;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1421,14 +1424,14 @@ nav button:hover::after {
     padding: 10px 15px;
     font-size: 16px;
   }
-  
+
   /* Fix subtitle positioning on medium screens */
   .contact-subtitle {
     position: static;
     margin-top: 10px;
     animation: none;
   }
-  
+
   .contact-content,
   .contact-form {
     width: 100%;
