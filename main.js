@@ -370,3 +370,44 @@ function toggleIntroCard() {
 }
 
 window.toggleIntroCard = toggleIntroCard;
+
+const form = document.querySelector("form");
+
+// Handle form submission
+form.addEventListener("submit", async(e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const formValues = Object.fromEntries(formData);
+
+  try {
+    const response = await fetch('https://kdgqg3w87j.execute-api.us-west-1.amazonaws.com/Portfolio/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formValues.name,
+        email: formValues?.email,
+        phone: formValues?.phone,
+        message: formValues.message,
+      })
+    });
+
+    if (response.ok) {
+      console.log('Message sent successfully!');
+      // Clear the form
+      e.target.reset();
+      // You could show a success message to the user here
+    } else {
+      console.error('Failed to send message:', response.status, response.statusText);
+      // You could show an error message to the user here
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+    // You could show an error message to the user here
+  }
+});
+
+
+
+
