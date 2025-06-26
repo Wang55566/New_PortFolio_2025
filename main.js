@@ -395,16 +395,13 @@ form.addEventListener("submit", async(e) => {
 
     if (response.ok) {
       console.log('Message sent successfully!');
-      // Clear the form
       e.target.reset();
-      // You could show a success message to the user here
+      alert('Your message has been sent successfully!, I will get back to you as soon as possible.');
     } else {
       console.error('Failed to send message:', response.status, response.statusText);
-      // You could show an error message to the user here
     }
   } catch (error) {
     console.error('Error sending message:', error);
-    // You could show an error message to the user here
   }
 });
 
