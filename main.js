@@ -111,7 +111,7 @@ function initThreeJS() {
 
   // Load living room
   loader.load(
-    "/assets/living_room.glb",
+    "https://seng-portfolio-bucket.s3.us-west-1.amazonaws.com/living_room.glb",
     (gltf) => {
       const livingRoom = gltf.scene;
       livingRoom.traverse((child) => {
