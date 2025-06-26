@@ -374,37 +374,53 @@ window.toggleIntroCard = toggleIntroCard;
 const form = document.querySelector("form");
 
 // Handle form submission
-form.addEventListener("submit", async(e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const submitButton = e.target.querySelector(".submit-btn");
+  const sendMessageText = submitButton.innerHTML;
+
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
   const formData = new FormData(e.target);
   const formValues = Object.fromEntries(formData);
 
   try {
-    const response = await fetch('https://kdgqg3w87j.execute-api.us-west-1.amazonaws.com/Portfolio/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: formValues.name,
-        email: formValues?.email,
-        phone: formValues?.phone,
-        message: formValues.message,
-      })
-    });
+    const response = await fetch(
+      "https://kdgqg3w87j.execute-api.us-west-1.amazonaws.com/Portfolio/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formValues.name,
+          email: formValues?.email,
+          phone: formValues?.phone,
+          message: formValues.message,
+        }),
+      }
+    );
 
     if (response.ok) {
-      console.log('Message sent successfully!');
+      console.log("Message sent successfully!");
       e.target.reset();
-      alert('Your message has been sent successfully!, I will get back to you as soon as possible.');
+      alert(
+        "Your message has been sent successfully!, I will get back to you as soon as possible."
+      );
     } else {
-      console.error('Failed to send message:', response.status, response.statusText);
+      console.error(
+        "Failed to send message:",
+        response.status,
+        response.statusText
+      );
+      alert("Failed to send message. Please try again.");
     }
   } catch (error) {
-    console.error('Error sending message:', error);
+    alert("Error sending message. Please try again.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = sendMessageText;
   }
 });
-
-
-
-
