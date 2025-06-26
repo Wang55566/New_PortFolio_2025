@@ -1,86 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <nav>
-    <div class="title-section">
-      <h2 id="title">Code & Creativity</h2>
-      <button class="music-button" onclick="toggleMusic()" data-tooltip="Play Music"><i class="fas fa-music fa-lg"></i></button>
-    </div>
-    <div class="menu-buttons">
-      <button class="home-button" onclick="scrollToSection('home-section')" data-tooltip="Home"><i class="fas fa-home fa-lg"></i></button>
-      <button class="about-button" onclick="scrollToSection('about-me-section')" data-tooltip="About Me"><i class="fas fa-user fa-lg"></i></button>
-      <button class="work-button" onclick="scrollToSection('work-section')" data-tooltip="My Work"><i class="fas fa-briefcase fa-lg"></i></button>
-      <button class="contact-button" onclick="scrollToSection('contact-section')" data-tooltip="Contact Me"><i class="fas fa-envelope fa-lg"></i></button>
-    </div>
-  </nav>
-  <div id="main">
-    <section id="home-section">
-      <div class="particles-container" id="particles"></div>
-      <div class="home-section-main">
-        <div id="welcome-text">Welcome to my playground</div>
-        <div class="home-section-main-flex">
-          <div class="intro-card">
-            <div class="intro-header">
-              <i class="fas fa-user-circle"></i>
-              <h3>Bruce Wang</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="title-section">
+        <h2 id="title">Code & Creativity</h2>
+        <button
+          class="music-button"
+          onclick="toggleMusic()"
+          data-tooltip="Play Music"
+        >
+          <i class="fas fa-music fa-lg"></i>
+        </button>
+      </div>
+      <div class="menu-buttons">
+        <button
+          class="home-button"
+          onclick="scrollToSection('home-section')"
+          data-tooltip="Home"
+        >
+          <i class="fas fa-home fa-lg"></i>
+        </button>
+        <button
+          class="about-button"
+          onclick="scrollToSection('about-me-section')"
+          data-tooltip="About Me"
+        >
+          <i class="fas fa-user fa-lg"></i>
+        </button>
+        <button
+          class="work-button"
+          onclick="scrollToSection('work-section')"
+          data-tooltip="My Work"
+        >
+          <i class="fas fa-briefcase fa-lg"></i>
+        </button>
+        <button
+          class="contact-button"
+          onclick="scrollToSection('contact-section')"
+          data-tooltip="Contact Me"
+        >
+          <i class="fas fa-envelope fa-lg"></i>
+        </button>
+      </div>
+    </nav>
+    <div id="main">
+      <section id="home-section">
+        <div class="particles-container" id="particles"></div>
+        <div class="home-section-main">
+          <div id="welcome-text">Welcome to my playground</div>
+          <div class="home-section-main-flex">
+            <div class="intro-card">
+              <div class="intro-header">
+                <i class="fas fa-user-circle"></i>
+                <h3>Bruce Wang</h3>
+              </div>
+              <div class="intro-content">
+                <h4>🎯&nbsp;&nbsp;&nbsp;Frontend Engineer</h4>
+                <p>
+                  Passionate about creating immersive digital experiences with
+                  modern technology and intuitive design.
+                </p>
+                <div class="intro-tags">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">CSS3</span>
+                  <span class="tag">HTML5</span>
+                  <span class="tag">React</span>
+                  <span class="tag">Vue.js</span>
+                  <span class="tag">Three.js</span>
+                  <span class="tag">UI/UX</span>
+                </div>
+                <div class="home-social-links">
+                  <a
+                    href="https://github.com/Wang55566"
+                    target="_blank"
+                    class="social-link"
+                    title="GitHub"
+                    data-tooltip="View my projects on GitHub"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/seng-wang-142a5a149/"
+                    target="_blank"
+                    class="social-link"
+                    title="LinkedIn"
+                    data-tooltip="Connect with me on LinkedIn"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a
+                    href="/assets/resume.pdf"
+                    target="_blank"
+                    class="social-link"
+                    title="Resume"
+                    data-tooltip="Download my resume"
+                  >
+                    <i class="fas fa-file-alt"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="intro-content">
-              <h4>🎯 Frontend Engineer</h4>
-              <p>Passionate about creating immersive digital experiences with modern technology and intuitive design.</p>
-              <div class="intro-tags">
-                <span class="tag">JavaScript</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">HTML5</span>
-                <span class="tag">React</span>
-                <span class="tag">Vue.js</span>
-                <span class="tag">Three.js</span>
-                <span class="tag">UI/UX</span>
-                <span class="tag">WebGL</span>
+            <div class="interactive-buttons">
+              <button
+                class="action-button about-me-btn"
+                onclick="scrollToSection('about-me-section')"
+              >
+                <i class="fas fa-user"></i>
+                <span>Get to Know Me</span>
+              </button>
+              <button
+                class="action-button work-btn"
+                onclick="scrollToSection('work-section')"
+              >
+                <i class="fas fa-briefcase"></i>
+                <span>View My Work</span>
+              </button>
+              <button
+                class="action-button contact-btn"
+                onclick="scrollToSection('contact-section')"
+              >
+                <i class="fas fa-envelope"></i>
+                <span>Contact Me</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <button
+            class="scroll-button"
+            onclick="scrollToSection('about-me-section')"
+            data-tooltip="Go to About Me"
+          >
+            <div class="scroll-arrow">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </button>
+        </div>
+      </section>
+      <section id="about-me-section">
+        <div class="about-header">
+          <h1 class="about-me-title">About Me</h1>
+          <div class="profile-avatar">
+            <img
+              src="assets/photo.jpeg"
+              alt="Bruce Wang"
+              class="profile-photo"
+            />
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="content-card story-card">
+            <div class="card-header">
+              <i class="fas fa-book-open"></i>
+              <h3>Introduction</h3>
+            </div>
+            <div class="card-content">
+              <p class="story-intro">
+                Hello! I'm <b>Bruce Wang</b>, a frontend engineer based in
+                Taipei, Taiwan. In 2022, I completed <b>App Academy</b>, an
+                intensive software engineering program. Today, I specialize in
+                building entrepreneurial products as a frontend engineer.
+              </p>
+              <p class="story-intro">
+                Being bilingual in <b>English</b> and <b>Mandarin Chinese</b>, I
+                am able to offer cross-cultural insights that enhance
+                communication and collaboration in global teams.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card interests-card">
+            <div class="card-header">
+              <i class="fas fa-info-circle"></i>
+              <h3>More Details</h3>
+            </div>
+            <div class="detail-categories">
+              <button
+                class="detail-category-button"
+                onclick="showDetails('background')"
+              >
+                <i class="fas fa-graduation-cap"></i> Background
+              </button>
+              <button
+                class="detail-category-button"
+                onclick="showDetails('expertise')"
+              >
+                <i class="fas fa-code"></i> Career
+              </button>
+              <button
+                class="detail-category-button"
+                onclick="showDetails('goals')"
+              >
+                <i class="fas fa-bullseye"></i> Goals
+              </button>
+              <button
+                class="detail-category-button"
+                onclick="showDetails('interests')"
+              >
+                <i class="fas fa-compass"></i> Interests
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="details-grid">
+                <!-- Background Details -->
+                <div class="detail-category" data-category="background">
+                  <p>
+                    I began coding in university, where I took computer science
+                    classes and learned the fundamentals of programming language. In 2022, I
+                    decided to attend App Academy for immersive software
+                    engineering training.
+                    <br /><br />
+                    After graduating, I participated in volunteer work and
+                    hackathon projects to gain hands-on experience before
+                    landing my first developer job.
+                  </p>
+                </div>
+
+                <!-- Expertise Details -->
+                <div class="detail-category" data-category="expertise">
+                  <p>
+                    Currently, I'm a Frontend Engineer at All Joint,
+                    specializing in modern frameworks like React and Vue.js to
+                    build e-commerce platforms and entrepreneurial products.
+                  </p>
+                </div>
+
+                <!-- Goals Details -->
+                <div class="detail-category" data-category="goals">
+                  <p>
+                    In the future, in addition to improving my frontend skills,
+                    I aim to deepen my knowledge in AI model training and cloud
+                    computing, with the goal of building AI-powered products
+                    that contribute to our world.
+                  </p>
+                </div>
+
+                <!-- Interests Details -->
+                <div class="detail-category" data-category="interests">
+                  <div class="interest-item">
+                    <div class="interest-content">
+                      <div class="interest-icon">
+                        <i class="fas fa-basketball-ball"></i>
+                      </div>
+                      <h4>Basketball</h4>
+                    </div>
+                    <p>Love playing basketball and following NBA games.</p>
+                  </div>
+                  <div class="interest-item">
+                    <div class="interest-content">
+                      <div class="interest-icon">
+                        <i class="fas fa-book"></i>
+                      </div>
+                      <h4>Reading</h4>
+                    </div>
+                    <p>
+                      Enjoy reading tech books, as well as thrilling and science
+                      fiction novels.
+                    </p>
+                  </div>
+                  <div class="interest-item">
+                    <div class="interest-content">
+                      <div class="interest-icon">
+                        <i class="fas fa-plane"></i>
+                      </div>
+                      <h4>Traveling</h4>
+                    </div>
+                    <p>
+                      Explore new cultures and cuisines, especially across East
+                      Asia.
+                    </p>
+                  </div>
+                  <div class="interest-item">
+                    <div class="interest-content">
+                      <div class="interest-icon">
+                        <i class="fas fa-guitar"></i>
+                      </div>
+                      <h4>Instruments</h4>
+                    </div>
+                    <p>Play guitar and piano casually in my free time.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="interactive-buttons">
-            <button class="action-button about-me-btn" onclick="scrollToSection('about-me-section')">
-              <i class="fas fa-user"></i>
-              <span>Get to Know Me</span>
-            </button>
-            <button class="action-button work-btn" onclick="scrollToSection('work-section')">
-              <i class="fas fa-briefcase"></i>
-              <span>View My Work</span>
-            </button>
-            <button class="action-button contact-btn" onclick="scrollToSection('contact-section')">
-              <i class="fas fa-envelope"></i>
-              <span>Contact Me</span>
-            </button>
+
+          <!-- Skills Section -->
+          <div class="content-card skills-card">
+            <div class="card-header">
+              <i class="fas fa-code"></i>
+              <h3>Technical Skills</h3>
+            </div>
+            <div class="skill-categories">
+              <button
+                class="skill-category-button"
+                onclick="showSkills('frontend')"
+              >
+                <i class="fas fa-laptop-code"></i> Frontend
+              </button>
+              <button
+                class="skill-category-button"
+                onclick="showSkills('devops')"
+              >
+                <i class="fas fa-cloud"></i> DevOps
+              </button>
+              <button
+                class="skill-category-button"
+                onclick="showSkills('tools')"
+              >
+                <i class="fas fa-tools"></i> Tools
+              </button>
+              <button
+                class="skill-category-button"
+                onclick="showSkills('design')"
+              >
+                <i class="fas fa-palette"></i> Design
+              </button>
+              <button
+                class="skill-category-button"
+                onclick="showSkills('others')"
+              >
+                <i class="fas fa-server"></i> Others
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="skill-category" data-category="frontend">
+                <div class="skill-items">
+                  <div class="skill-item">
+                    <span class="skill-name">JavaScript (ES6+)</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">TypeScript</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">HTML5</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">CSS3</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">React.js</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Vue.js</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-category" data-category="devops">
+                <div class="skill-items">
+                  <div class="skill-item">
+                    <span class="skill-name">Docker</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">AWS</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">GitHub Actions</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-category" data-category="tools">
+                <div class="skill-items">
+                  <div class="skill-item">
+                    <span class="skill-name">GitHub</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Webpack</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Vite</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-category" data-category="design">
+                <div class="skill-items">
+                  <div class="skill-item">
+                    <span class="skill-name">Figma</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Responsive Design</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">CSS Animations</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Three.js</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Ant Design</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-category" data-category="others">
+                <div class="skill-items">
+                  <div class="skill-item">
+                    <span class="skill-name">Node.js</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">RESTful APIs</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Python</span>
+                    <div class="star-rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <button class="scroll-button" onclick="scrollToSection('about-me-section')">
-          <div class="scroll-arrow">
-            <i class="fas fa-chevron-down"></i>
+      </section>
+      <section id="work-section"><h1>Work</h1></section>
+      <section id="contact-section">
+        <div class="contact-header">
+          <h1 class="contact-title">Get In Touch</h1>
+          <p class="contact-subtitle">Reach Out Anytime !!</p>
+        </div>
+
+        <div class="contact-flex">
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-info-title">Contact Information</div>
+              <div class="contact-info-content">
+                <div class="contact-info-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>wang6@hawaii.edi</span>
+                </div>
+                <div class="contact-info-item">
+                  <i class="fas fa-phone"></i>
+                  <span>(415) 390-7212</span>
+                  <span>(USA)</span>
+                </div>
+                <div class="contact-info-item">
+                  <i class="fas fa-phone"></i>
+                  <span>0910-500-172</span>
+                  <span>(Taiwan)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <div class="contact-social-title">Links</div>
+              <div class="contact-social-content">
+                <a
+                  href="https://github.com/Wang55566"
+                  target="_blank"
+                  class="social-card"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                  <small>View my projects</small>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/seng-wang-142a5a149"
+                  target="_blank"
+                  class="social-card"
+                >
+                  <i class="fab fa-linkedin"></i>
+                  <span>LinkedIn</span>
+                  <small>Professional profile</small>
+                </a>
+                <a
+                  href="/assets/resume.pdf"
+                  target="_blank"
+                  class="social-card"
+                >
+                  <i class="fas fa-file-alt"></i>
+                  <span>Resume</span>
+                  <small>Download PDF</small>
+                </a>
+              </div>
+            </div>
           </div>
-        </button>
-      </div>
-    </section>
-    <section id="about-me-section">
-    </section>
-    <section id="work-section"><h1>Work</h1></section>
-    <section id="contact-section"><h1>Contact</h1></section>
-  </div>
-  
-  <audio id="audio-player" loop>
-    <source src="/assets/music.mp3" type="audio/mp3">
-  </audio>
-  
-  <script type="module" src="main.js"></script>
-</body>
+
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm">
+            <div class="form-header">
+              <i class="fas fa-paper-plane"></i>
+              <h3>Send Me a Message</h3>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Optional"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">
+                <i class="fas fa-phone"></i>
+                Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Optional"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">
+                <i class="fas fa-comment"></i>
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me what's in your mind..."
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <audio id="audio-player" loop>
+      <source src="/assets/music.mp3" type="audio/mp3" />
+    </audio>
+
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
