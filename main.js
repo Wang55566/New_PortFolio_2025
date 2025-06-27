@@ -5,53 +5,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 // Initialize Three.js scene
 let scene, camera, renderer, controls;
 
-// Particle system
-function createParticles() {
-  const particlesContainer = document.getElementById("particles");
-  const particleCount = 100;
-
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement("div");
-    particle.className = "particle";
-
-    // Random position
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.top = Math.random() * 100 + "%";
-
-    // Random animation delay
-    particle.style.animationDelay = Math.random() * 6 + "s";
-    particle.style.animationDuration = Math.random() * 3 + 4 + "s";
-
-    // Random size
-    const size = Math.random() * 3 + 2;
-    particle.style.width = size + "px";
-    particle.style.height = size + "px";
-
-    // Random opacity
-    particle.style.opacity = Math.random() * 0.5 + 0.3;
-
-    particlesContainer.appendChild(particle);
-  }
-}
-
-// Enhanced typing effect
-function initTypingEffect() {
-  const welcomeText = document.getElementById("welcome-text");
-  const text = welcomeText.textContent;
-  welcomeText.textContent = "";
-
-  let i = 0;
-  const typeWriter = () => {
-    if (i < text.length) {
-      welcomeText.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
-    }
-  };
-
-  setTimeout(typeWriter, 500);
-}
-
 function initThreeJS() {
   // Show loading indicator
   showLoadingIndicator();
@@ -152,14 +105,59 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-function scrollToSection(sectionId) {
+window.scrollToSection = (sectionId) => {
   const section = document.getElementById(sectionId);
   section.scrollIntoView({ behavior: "smooth" });
-}
-
-window.scrollToSection = scrollToSection;
+};
 
 initThreeJS();
+
+// Particle system
+function createParticles() {
+  const particlesContainer = document.getElementById("particles");
+  const particleCount = 100;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+
+    // Random position
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.top = Math.random() * 100 + "%";
+
+    // Random animation delay
+    particle.style.animationDelay = Math.random() * 6 + "s";
+    particle.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+    // Random size
+    const size = Math.random() * 3 + 2;
+    particle.style.width = size + "px";
+    particle.style.height = size + "px";
+
+    // Random opacity
+    particle.style.opacity = Math.random() * 0.5 + 0.3;
+
+    particlesContainer.appendChild(particle);
+  }
+}
+
+// Enhanced typing effect
+function initTypingEffect() {
+  const welcomeText = document.getElementById("welcome-text");
+  const text = welcomeText.textContent;
+  welcomeText.textContent = "";
+
+  let i = 0;
+  const typeWriter = () => {
+    if (i < text.length) {
+      welcomeText.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
+  };
+
+  setTimeout(typeWriter, 500);
+}
 
 // Scroll to next and previous section functions
 // const sectionIds = [
@@ -228,7 +226,7 @@ let isMusicPlaying = false;
 const audioPlayer = document.getElementById("audio-player");
 const musicButton = document.querySelector(".music-button");
 
-window.toggleMusic = function () {
+window.toggleMusic = () => {
   if (isMusicPlaying) {
     audioPlayer.pause();
     musicButton.classList.remove("playing");
@@ -283,7 +281,7 @@ audioPlayer.addEventListener("error", function () {
 let currentSkillCategory = "frontend"; // default category
 let currentDetailCategory = "background"; // default detail category
 
-function showSkills(category) {
+window.showSkills = (category) => {
   // Update current category
   currentSkillCategory = category;
 
@@ -314,9 +312,9 @@ function showSkills(category) {
   if (activeButton) {
     activeButton.classList.add("active");
   }
-}
+};
 
-function showDetails(category) {
+window.showDetails = (category) => {
   // Update current category
   currentDetailCategory = category;
 
@@ -347,14 +345,10 @@ function showDetails(category) {
   if (activeButton) {
     activeButton.classList.add("active");
   }
-}
+};
 
-// Make functions globally accessible
-window.showSkills = showSkills;
-window.showDetails = showDetails;
-
-// Initialize skills display on page load
-document.addEventListener("DOMContentLoaded", function () {
+// Initialize the page
+document.addEventListener("DOMContentLoaded", () => {
   createParticles();
   initTypingEffect();
 
@@ -364,14 +358,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize details with default category
   showDetails(currentDetailCategory);
 });
-
-function toggleIntroCard() {
-  const introCard = document.querySelector(".intro-card");
-  introCard.style.display =
-    introCard.style.display === "none" ? "block" : "none";
-}
-
-window.toggleIntroCard = toggleIntroCard;
 
 const form = document.querySelector("form");
 

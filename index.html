@@ -126,6 +126,7 @@
               <button
                 class="action-button about-me-btn"
                 onclick="scrollToSection('about-me-section')"
+                data-tooltip="About Me"
               >
                 <i class="fas fa-user"></i>
                 <span>Get to Know Me</span>
@@ -133,6 +134,7 @@
               <button
                 class="action-button work-btn"
                 onclick="scrollToSection('work-section')"
+                data-tooltip="My Work"
               >
                 <i class="fas fa-briefcase"></i>
                 <span>View My Work</span>
@@ -140,6 +142,7 @@
               <button
                 class="action-button contact-btn"
                 onclick="scrollToSection('contact-section')"
+                data-tooltip="Contact Me"
               >
                 <i class="fas fa-envelope"></i>
                 <span>Contact Me</span>
@@ -151,7 +154,7 @@
           <button
             class="scroll-button"
             onclick="scrollToSection('about-me-section')"
-            data-tooltip="Go to About Me"
+            data-tooltip="Next Page"
           >
             <div class="scroll-arrow">
               <i class="fas fa-chevron-down"></i>
@@ -572,6 +575,17 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="scroll-indicator">
+          <button
+            class="scroll-button"
+            onclick="scrollToSection('work-section')"
+            data-tooltip="Next Page"
+          >
+            <div class="scroll-arrow">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </button>
         </div>
       </section>
       <section id="work-section"><h1>Work</h1></section>
