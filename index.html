@@ -13,6 +13,14 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
+    <!-- Preload 3D model for faster loading -->
+    <link
+      rel="preload"
+      href="https://seng-portfolio-bucket.s3.us-west-1.amazonaws.com/living_room.glb"
+      as="fetch"
+      crossorigin="anonymous"
+      fetchpriority="high"
+    />
   </head>
   <body>
     <nav>
@@ -700,6 +708,10 @@
           </form>
         </div>
       </section>
+      <div id="loading-indicator">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>LOADING...</p>
+      </div>
     </div>
 
     <audio id="audio-player" loop>

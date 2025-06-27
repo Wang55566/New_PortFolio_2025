@@ -1443,3 +1443,55 @@ nav button:hover::after {
   height: 100%;
   background-color: #2173ca;
 }
+
+/* Loading Indicator */
+#loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+#loading-indicator i {
+  font-size: 45px;
+  color: #64b5f6;
+  text-shadow: 0 0 25px rgba(100, 181, 246, 0.6);
+  animation: spin 1.5s infinite;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+#loading-indicator p {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  animation: sparkle 2.5s ease-in-out infinite;
+}

@@ -49,11 +49,12 @@ function initTypingEffect() {
     }
   };
 
-  // Start typing after a short delay
   setTimeout(typeWriter, 500);
 }
 
 function initThreeJS() {
+  // Show loading indicator
+  showLoadingIndicator();
   // Create scene
   scene = new THREE.Scene();
 
@@ -109,7 +110,7 @@ function initThreeJS() {
   // Load both models
   const loader = new GLTFLoader();
 
-  // Load living room
+  // Load living room from S3
   loader.load(
     "https://seng-portfolio-bucket.s3.us-west-1.amazonaws.com/living_room.glb",
     (gltf) => {
@@ -132,6 +133,7 @@ function initThreeJS() {
       // Add fade-in effect after the model is loaded
       setTimeout(() => {
         renderer.domElement.classList.add("visible");
+        hideLoadingIndicator();
       }, 100);
     },
     undefined,
@@ -424,3 +426,14 @@ form.addEventListener("submit", async (e) => {
     submitButton.innerHTML = sendMessageText;
   }
 });
+
+/* Loading Indicator */
+function showLoadingIndicator() {
+  const loadingIndicator = document.getElementById("loading-indicator");
+  loadingIndicator.style.display = "flex";
+}
+
+function hideLoadingIndicator() {
+  const loadingIndicator = document.getElementById("loading-indicator");
+  loadingIndicator.style.display = "none";
+}
