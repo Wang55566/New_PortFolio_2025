@@ -318,8 +318,6 @@ nav button:hover::after {
 .work-btn {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
