@@ -316,18 +316,18 @@ nav button:hover::after {
 }
 
 .work-btn {
-  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
 .work-btn:hover {
-  background: linear-gradient(135deg, #00b8e6, #0088b3);
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
 }
 
 .contact-btn {
