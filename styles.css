@@ -1354,10 +1354,9 @@ nav button:hover::after {
     width: 100%;
     max-width: 350px;
     padding: 25px;
-  }
+  
 
   .form-grid {
-    grid-template-columns: 1fr;
     gap: 15px;
   }
 
