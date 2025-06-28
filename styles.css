@@ -862,11 +862,9 @@ nav button:hover::after {
     #ff7f50 75%,
     #ff6347 100%
   );
-  width: 100%;
   min-height: 100vh;
   padding-top: calc(60px + 20px);
   position: relative;
-  overflow-x: hidden;
 }
 
 .contact-header {
@@ -1206,6 +1204,108 @@ nav button:hover::after {
 }
 
 /* Media Queries */
+@media screen and (max-width: 1023px) {
+  .contact-flex {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .contact-title {
+    font-size: 35px;
+  }
+  .contact-form {
+    padding: 25px;
+  }
+  .form-group input {
+    padding: 10px 15px;
+  }
+  .form-header h3 {
+    font-size: 18px;
+  }
+  .form-group label {
+    font-size: 14px;
+  }
+  .form-group textarea {
+    line-height: 18px;
+    height: 100px;
+    padding: 10px 15px;
+  }
+  .submit-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  /* Fix subtitle positioning on medium screens */
+  .contact-subtitle {
+    margin-top: 20px;
+    font-size: 20px;
+    top: 55%;
+    left: 32%;
+  }
+
+  .contact-content,
+  .contact-form {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #welcome-text {
+    font-size: 32px;
+  }
+  .home-section-main {
+    top: 15%;
+  }
+  .home-section-main-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .intro-header {
+    font-size: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .intro-header h3 {
+    font-size: 20px;
+  }
+
+  .intro-content h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .interactive-buttons {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .interactive-buttons button {
+    width: 100px;
+  }
+
+  .interactive-buttons button span {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 789px) {
+  .content-card,
+  .detail-category {
+    min-height: unset;
+    height: fit-content;
+  }
+  .story-intro:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 650px) {
   nav {
     height: 100px;
@@ -1222,14 +1322,13 @@ nav button:hover::after {
     transform: translateX(50%);
   }
 
-  #about-me-section {
-    padding-top: calc(100px + 20px);
+  #welcome-text {
+    font-size: 22px;
   }
 
+  #about-me-section,
   #contact-section {
     padding-top: calc(100px + 20px);
-    min-height: auto;
-    padding-bottom: 40px;
   }
 
   .contact-title {
@@ -1238,15 +1337,10 @@ nav button:hover::after {
   }
 
   .contact-subtitle {
-    font-size: 18px;
-    position: static;
-    margin-top: 10px;
-    animation: none;
+    font-size: 16px;
   }
 
   .contact-flex {
-    flex-direction: column;
-    align-items: center;
     gap: 20px;
     padding: 15px;
   }
@@ -1306,110 +1400,6 @@ nav button:hover::after {
   .contact-info-title,
   .contact-social-title {
     font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 789px) {
-  .content-card,
-  .detail-category {
-    min-height: unset;
-    height: fit-content;
-  }
-  .story-intro:not(:last-child) {
-    margin-bottom: 20px;
-  }
-  .about-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #welcome-text {
-    font-size: 32px;
-  }
-  .home-section-main {
-    top: 15%;
-  }
-  .home-section-main-flex {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .intro-header {
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-  }
-
-  .intro-header h3 {
-    font-size: 20px;
-  }
-
-  .intro-content h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .interactive-buttons {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .interactive-buttons button {
-    width: 100px;
-  }
-
-  .interactive-buttons button span {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  .contact-flex {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  .contact-title {
-    font-size: 35px;
-  }
-  .contact-subtitle {
-    font-size: 20px;
-  }
-  .contact-form {
-    padding: 25px;
-  }
-  .form-group input {
-    padding: 10px 15px;
-  }
-  .form-header h3 {
-    font-size: 18px;
-  }
-  .form-group label {
-    font-size: 14px;
-  }
-  .form-group textarea {
-    line-height: 18px;
-    height: 100px;
-    padding: 10px 15px;
-  }
-  .submit-btn {
-    padding: 10px 15px;
-    font-size: 16px;
-  }
-
-  /* Fix subtitle positioning on medium screens */
-  .contact-subtitle {
-    position: static;
-    margin-top: 10px;
-    animation: none;
-  }
-
-  .contact-content,
-  .contact-form {
-    width: 100%;
-    max-width: 500px;
   }
 }
 
