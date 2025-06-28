@@ -1234,12 +1234,11 @@ nav button:hover::after {
     font-size: 16px;
   }
 
-  /* Fix subtitle positioning on medium screens */
   .contact-subtitle {
+    position: static;
     margin-top: 20px;
     font-size: 20px;
-    top: 55%;
-    left: 32%;
+    animation: none;
   }
 
   .contact-content,
