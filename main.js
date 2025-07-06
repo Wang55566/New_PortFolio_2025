@@ -24,6 +24,8 @@ function initThreeJS() {
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
+  renderer.domElement.style.width = '100vw';
+  renderer.domElement.style.height = '100vh';
   document.getElementById("home-section").appendChild(renderer.domElement);
 
   // Add orbit controls
