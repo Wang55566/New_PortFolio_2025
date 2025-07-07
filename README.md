@@ -8,7 +8,6 @@ A modern, interactive portfolio website showcasing my skills, projects, and expe
 - **Responsive Design**: Fully responsive layout that works on all devices
 - **Modern UI/UX**: Clean, professional design with smooth animations and transitions
 - **Interactive Elements**: Particle effects, typing animations, and smooth scrolling
-- **Music Integration**: Background music with toggle functionality
 - **Contact Form**: Functional contact form with AWS Lambda backend
 - **Skill Showcase**: Interactive skill categories with visual ratings
 - **Project Gallery**: Detailed project showcase with technologies used
@@ -20,19 +19,11 @@ A modern, interactive portfolio website showcasing my skills, projects, and expe
 - **CSS3** - Modern styling with Flexbox and Grid
 - **JavaScript (ES6+)** - Interactive functionality and animations
 - **Three.js** - 3D graphics and animations
-- **Font Awesome** - Icon library
 
 ### Backend & Services
 - **AWS Lambda** - Contact form processing
 - **AWS S3** - 3D model hosting
-- **Google Fonts** - Typography
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-- **Desktop** (1200px+)
-- **Tablet** (768px - 1199px)
-- **Mobile** (320px - 767px)
+- **AWS Amplify** - Deployment
 
 ## 📞 Contact
 
@@ -46,8 +37,6 @@ The website is fully responsive and optimized for:
 - **Three.js** for 3D graphics capabilities
 - **Font Awesome** for beautiful icons
 - **Google Fonts** for typography
-- **App Academy** for software engineering education
-- **All Joint** for current professional experience
 
 ---
 
