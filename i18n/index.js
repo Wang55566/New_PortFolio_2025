@@ -3,7 +3,6 @@ class I18n {
   constructor() {
     this.currentLang = this.detectLanguage();
     this.translations = {};
-    this.init();
   }
 
   // Detect browser language
@@ -63,7 +62,10 @@ class I18n {
   // Hide translatable elements to prevent flash of untranslated content
   hideTranslatableElements() {
     // Only hide if DOM is ready
-    if (document.readyState === 'loading') return;
+    if (document.readyState === 'loading') {
+      // Mark that we need to hide elements later
+      return;
+    }
     
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
@@ -89,19 +91,40 @@ class I18n {
       // Use vite-ignore for dynamic imports as Vite cannot statically analyze variable imports
       const langModule = await import(/* @vite-ignore */ `./${this.currentLang}.js`);
       this.translations = langModule.default || langModule;
+      if (!this.translations || Object.keys(this.translations).length === 0) {
+        throw new Error('Translations object is empty');
+      }
     } catch (error) {
       console.error('Error loading translations:', error);
-      // Fallback to English
-      if (this.currentLang !== 'en') {
-        this.currentLang = 'en';
-        const langModule = await import('./en.js');
-        this.translations = langModule.default || langModule;
+      // Fallback to Traditional Chinese
+      if (this.currentLang !== 'zh-TW') {
+        try {
+          this.currentLang = 'zh-TW';
+          const langModule = await import('./zh-TW.js');
+          this.translations = langModule.default || langModule;
+          if (!this.translations || Object.keys(this.translations).length === 0) {
+            throw new Error('Traditional Chinese translations also failed');
+          }
+        } catch (fallbackError) {
+          console.error('Fallback to Traditional Chinese also failed:', fallbackError);
+          // Set empty translations as last resort
+          this.translations = {};
+        }
+      } else {
+        // If Traditional Chinese already failed, set empty translations
+        this.translations = {};
       }
     }
   }
 
   // Get translation for a key
   t(key, params = {}) {
+    // Check if translations are loaded
+    if (!this.translations || Object.keys(this.translations).length === 0) {
+      console.warn('Translations not loaded yet, returning key:', key);
+      return key;
+    }
+    
     const keys = key.split('.');
     let value = this.translations;
     
@@ -131,20 +154,35 @@ class I18n {
       return;
     }
 
-    this.currentLang = lang;
-    localStorage.setItem('portfolio-lang', lang);
-    
-    // Reload translations
-    await this.loadTranslations();
-    
-    // Update HTML lang attribute
-    document.documentElement.lang = lang;
-    
-    // Update page content
-    this.updatePage();
-    
-    // Trigger custom event for other modules
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    try {
+      const previousLang = this.currentLang;
+      this.currentLang = lang;
+      localStorage.setItem('portfolio-lang', lang);
+      
+      // Reload translations
+      await this.loadTranslations();
+      
+      // Check if translations loaded successfully
+      if (!this.translations || Object.keys(this.translations).length === 0) {
+        console.error('Failed to load translations, reverting language change');
+        // Revert to previous language
+        this.currentLang = previousLang;
+        await this.loadTranslations();
+        return;
+      }
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update page content
+      this.updatePage();
+      
+      // Trigger custom event for other modules
+      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    } catch (error) {
+      console.error('Error changing language:', error);
+      // Optionally revert or show error message
+    }
   }
 
   // Update all translatable elements on the page

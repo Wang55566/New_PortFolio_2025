@@ -84,7 +84,7 @@ export default {
     exp1_6: "Utilized Docker to containerize the applications and deploy them to cloud services.",
     softwareEngineeringProgram: "Software Engineering Program",
     appAcademy: "App Academy",
-    dateRange2: "2023/10 ~ 2023/06",
+    dateRange2: "2022/10 ~ 2023/06",
     location2: "Online",
     exp2_1: "Accomplished intensive software engineering program in 28 weeks.",
     exp2_2: "Acquired fundamental knowledge of modern software engineering principles and practices.",

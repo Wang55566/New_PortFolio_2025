@@ -84,7 +84,7 @@ export default {
     exp1_6: "使用 Docker 將應用程式容器化並部署到雲端服務。",
     softwareEngineeringProgram: "軟體工程課程",
     appAcademy: "App Academy",
-    dateRange2: "2023/10 ~ 2023/06",
+    dateRange2: "2022/10 ~ 2023/06",
     location2: "線上",
     exp2_1: "在 28 週內完成密集的軟體工程課程。",
     exp2_2: "學習現代軟體工程和其實務的基礎知識。",
