@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import getI18n from "./i18n";
 
 // Initialize Three.js scene
 let scene, camera, renderer, controls;
@@ -33,14 +34,7 @@ function initThreeJS() {
   controls.enableZoom = false;
   controls.enablePan = false;
 
-  // Limit vertical rotation between 45° and 120°
-  // controls.minPolarAngle = Math.PI / 4;
-  //controls.maxPolarAngle = Math.PI / 1.5;
-
-  // Limit horizontal rotation between -22.5° and 22.5°
   const initialAzimuth = controls.getAzimuthalAngle();
-  //controls.minAzimuthAngle = initialAzimuth - Math.PI / 8;
-  //controls.maxAzimuthAngle = initialAzimuth + Math.PI / 8;
 
   controls.autoRotate = true;
   controls.autoRotateSpeed = 1.0;
@@ -143,85 +137,113 @@ function createParticles() {
   }
 }
 
+// Track typing animation state
+let isTyping = false;
+let typingTimeout = null;
+
+// Enable/disable language toggle button
+function setLanguageButtonEnabled(enabled) {
+  const languageButton = document.getElementById('languageToggle');
+  if (languageButton) {
+    languageButton.disabled = !enabled;
+    languageButton.style.opacity = enabled ? '1' : '0.5';
+    languageButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
+  }
+}
+
 // Enhanced typing effect
-function initTypingEffect() {
+async function initTypingEffect() {
   const welcomeText = document.getElementById("welcome-text");
-  const text = welcomeText.textContent;
+  if (!welcomeText) return;
+  
+  // Clear any existing typing animation
+  if (typingTimeout) {
+    clearTimeout(typingTimeout);
+    typingTimeout = null;
+  }
+  
+  // Clear the text FIRST to prevent flash of text before animation starts
   welcomeText.textContent = "";
+  
+  // Get the translated text from i18n
+  let text = '';
+  try {
+    // Get i18n instance (will wait for initialization if needed)
+    const i18n = await getI18n();
+    text = i18n.t('home.welcome');
+  } catch (error) {
+    console.warn('Failed to get translation:', error);
+    text = '';
+  }
+
+  // Disable language button during typing animation
+  isTyping = true;
+  setLanguageButtonEnabled(false);
 
   let i = 0;
   const typeWriter = () => {
     if (i < text.length) {
       welcomeText.textContent += text.charAt(i);
       i++;
-      setTimeout(typeWriter, 100);
+      typingTimeout = setTimeout(typeWriter, 100);
+    } else {
+      // Animation completed, enable language button
+      isTyping = false;
+      setLanguageButtonEnabled(true);
+      typingTimeout = null;
     }
   };
 
-  setTimeout(typeWriter, 500);
+  // Start typing animation after a short delay
+  typingTimeout = setTimeout(typeWriter, 500);
 }
 
-// Scroll to next and previous section functions
-// const sectionIds = [
-//   "home-section",
-//   "about-me-section",
-//   "work-section",
-//   "contact-section",
-// ];
-
-// function scrollToNextSection() {
-//   // Find the section closest to the top
-//   let currentIdx = 0;
-//   for (let i = 0; i < sectionIds.length; i++) {
-//     const section = document.getElementById(sectionIds[i]);
-//     const rect = section.getBoundingClientRect();
-//     if (rect.top >= -10) {
-//       currentIdx = i;
-//       break;
-//     }
-//   }
-
-//   if (currentIdx < sectionIds.length - 1) {
-//     const nextSection = document.getElementById(sectionIds[currentIdx + 1]);
-//     if (nextSection) {
-//       nextSection.scrollIntoView({ behavior: "smooth" });
-//     }
-//   }
-// }
-
-// function scrollToPrevSection() {
-//   let currentIdx = 0;
-//   for (let i = 0; i < sectionIds.length; i++) {
-//     const section = document.getElementById(sectionIds[i]);
-//     const rect = section.getBoundingClientRect();
-//     if (rect.top >= -10) {
-//       currentIdx = i;
-//       break;
-//     }
-
-//   }
-//   if (currentIdx > 0) {
-//     const prevSection = document.getElementById(sectionIds[currentIdx - 1]);
-//     if (prevSection) {
-//       prevSection.scrollIntoView({ behavior: "smooth" });
-//     }
-//   }
-// }
-
-// window.scrollToNextSection = scrollToNextSection;
-// window.scrollToPrevSection = scrollToPrevSection;
-
-// window.addEventListener(
-//   "wheel",
-//   (e) => {
-//     if (e.deltaY > 0) {
-//       scrollToNextSection();
-//     } else if (e.deltaY < 0) {
-//       scrollToPrevSection();
-//     }
-//   },
-//   { passive: false }
-// );
+// Language toggle function
+window.toggleLanguage = async () => {
+  // Prevent language toggle during typing animation
+  if (isTyping) {
+    return;
+  }
+  
+  // Get i18n instance (will wait for initialization if needed)
+  let i18n;
+  try {
+    i18n = await getI18n();
+  } catch (error) {
+    console.warn("i18n not initialized yet:", error);
+    return;
+  }
+  
+  const welcomeText = document.getElementById("welcome-text");
+  
+  // Clear the text IMMEDIATELY to prevent flash before animation
+  if (welcomeText) {
+    welcomeText.textContent = "";
+  }
+  
+  const currentLang = i18n.getCurrentLanguage();
+  const newLang = currentLang === 'en' ? 'zh-TW' : 'en';
+  
+  // Disable button during language change
+  setLanguageButtonEnabled(false);
+  
+  await i18n.changeLanguage(newLang);
+  
+  // i18n.updatePage() now skips welcome-text, so it should still be empty
+  // Ensure it's empty before starting animation
+  if (welcomeText) {
+    welcomeText.textContent = "";
+  }
+  
+  // Wait a bit for i18n to update the DOM, then re-initialize typing effect
+  // The button will be re-enabled when typing animation completes
+  // Use requestAnimationFrame to ensure DOM is updated
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      initTypingEffect();
+    }, 50);
+  });
+};
 
 // Music functionality
 let isMusicPlaying = false;
@@ -238,22 +260,23 @@ window.toggleMusic = () => {
     audioPlayer.play().catch((error) => {
       console.log("Audio play failed:", error);
       // Fallback: try to play on user interaction
-      document.addEventListener(
-        "click",
-        function playOnClick() {
-          audioPlayer
-            .play()
-            .then(() => {
-              musicButton.classList.add("playing");
-              musicButton.innerHTML =
-                '<i class="fas fa-volume-mute fa-lg"></i>';
-              isMusicPlaying = true;
-            })
-            .catch((err) => console.log("Audio play still failed:", err));
-          document.removeEventListener("click", playOnClick);
-        },
-        { once: true }
-      );
+      const playOnClick = () => {
+        audioPlayer
+          .play()
+          .then(() => {
+            musicButton.classList.add("playing");
+            musicButton.innerHTML =
+              '<i class="fas fa-volume-mute fa-lg"></i>';
+            isMusicPlaying = true;
+            document.removeEventListener("click", playOnClick);
+          })
+          .catch((err) => {
+            console.log("Audio play still failed:", err);
+            // Ensure event listener is removed even if play fails
+            document.removeEventListener("click", playOnClick);
+          });
+      };
+      document.addEventListener("click", playOnClick, { once: true });
     });
 
     if (audioPlayer.readyState >= 2) {
@@ -350,15 +373,28 @@ window.showDetails = (category) => {
 };
 
 // Initialize the page
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   createParticles();
-  initTypingEffect();
+  
+  // Wait for i18n to initialize and complete translation
+  await getI18n();
+  
+  // Small delay to ensure DOM is updated with translations
+  await new Promise(resolve => setTimeout(resolve, 100));
+  
+  await initTypingEffect();
 
   // Initialize skills with default category
   showSkills(currentSkillCategory);
 
   // Initialize details with default category
   showDetails(currentDetailCategory);
+  
+  // Enable language button after initialization (if not typing)
+  // Note: typing effect will be triggered by toggleLanguage function when language changes
+  if (!isTyping) {
+    setLanguageButtonEnabled(true);
+  }
 });
 
 const form = document.querySelector("form");
@@ -369,9 +405,21 @@ form.addEventListener("submit", async (e) => {
 
   const submitButton = e.target.querySelector(".submit-btn");
   const sendMessageText = submitButton.innerHTML;
+  
+  // Get i18n instance for translations
+  let i18n;
+  try {
+    i18n = await getI18n();
+  } catch (error) {
+    console.warn('i18n not available:', error);
+    i18n = null;
+  }
+  
+  const sendingText = i18n ? i18n.t('contact.sending') : 'Sending...';
+  const sendingHtml = `<i class="fas fa-spinner fa-spin"></i> ${sendingText}`;
 
   submitButton.disabled = true;
-  submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  submitButton.innerHTML = sendingHtml;
 
   const formData = new FormData(e.target);
   const formValues = Object.fromEntries(formData);
@@ -396,19 +444,20 @@ form.addEventListener("submit", async (e) => {
     if (response.ok) {
       console.log("Message sent successfully!");
       e.target.reset();
-      alert(
-        "Your message has been sent successfully!, I will get back to you as soon as possible."
-      );
+      const successMsg = i18n ? i18n.t('contact.successMessage') : "Your message has been sent successfully!, I will get back to you as soon as possible.";
+      alert(successMsg);
     } else {
       console.error(
         "Failed to send message:",
         response.status,
         response.statusText
       );
-      alert("Failed to send message. Please try again.");
+      const errorMsg = i18n ? i18n.t('contact.errorMessage') : "Failed to send message. Please try again.";
+      alert(errorMsg);
     }
   } catch (error) {
-    alert("Error sending message. Please try again.");
+    const errorGeneralMsg = i18n ? i18n.t('contact.errorGeneral') : "Error sending message. Please try again.";
+    alert(errorGeneralMsg);
   } finally {
     submitButton.disabled = false;
     submitButton.innerHTML = sendMessageText;

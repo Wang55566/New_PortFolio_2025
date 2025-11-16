@@ -40,7 +40,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Pacifico&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
     <!-- Preload 3D model for faster loading -->
@@ -55,19 +55,32 @@
   <body>
     <nav>
       <div class="title-section">
-        <h2 id="title">Code & Creativity</h2>
+        <h2 id="title" data-i18n="nav.title"></h2>
         <button
           class="music-button"
           onclick="toggleMusic()"
+          data-i18n-title="nav.playMusic"
           data-tooltip="Play Music"
         >
           <i class="fas fa-music fa-lg"></i>
+        </button>
+        <button
+          class="language-button"
+          id="languageToggle"
+          onclick="toggleLanguage()"
+          data-i18n-title="nav.language"
+          data-tooltip="Switch Language"
+          title="Switch Language"
+          disabled
+        >
+          <i class="fas fa-language fa-lg"></i>
         </button>
       </div>
       <div class="menu-buttons">
         <button
           class="home-button"
           onclick="scrollToSection('home-section')"
+          data-i18n-title="nav.home"
           data-tooltip="Home"
         >
           <i class="fas fa-home fa-lg"></i>
@@ -75,6 +88,7 @@
         <button
           class="about-button"
           onclick="scrollToSection('about-me-section')"
+          data-i18n-title="nav.aboutMe"
           data-tooltip="About Me"
         >
           <i class="fas fa-user fa-lg"></i>
@@ -82,6 +96,7 @@
         <button
           class="work-button"
           onclick="scrollToSection('work-section')"
+          data-i18n-title="nav.myWork"
           data-tooltip="My Work"
         >
           <i class="fas fa-briefcase fa-lg"></i>
@@ -89,6 +104,7 @@
         <button
           class="contact-button"
           onclick="scrollToSection('contact-section')"
+          data-i18n-title="nav.contactMe"
           data-tooltip="Contact Me"
         >
           <i class="fas fa-envelope fa-lg"></i>
@@ -99,19 +115,16 @@
       <section id="home-section">
         <div class="particles-container" id="particles"></div>
         <div class="home-section-main">
-          <div id="welcome-text">Welcome to my playground</div>
+          <div id="welcome-text" data-i18n="home.welcome"></div>
           <div class="home-section-main-flex">
             <div class="intro-card">
               <div class="intro-header">
                 <i class="fas fa-user-circle"></i>
-                <h3>Bruce Wang</h3>
+                <h3 data-i18n="home.myName"></h3>
               </div>
               <div class="intro-content">
-                <h4>🎯&nbsp;&nbsp;&nbsp;Frontend Engineer</h4>
-                <p>
-                  Passionate about creating immersive digital experiences with
-                  modern technology and intuitive design.
-                </p>
+                <h4>🎯&nbsp;&nbsp;&nbsp;<span data-i18n="home.frontendEngineer"></span></h4>
+                <p data-i18n="home.intro"></p>
                 <div class="intro-tags">
                   <span class="tag">JavaScript</span>
                   <span class="tag">CSS3</span>
@@ -127,6 +140,7 @@
                     target="_blank"
                     class="social-link"
                     title="GitHub"
+                    data-i18n-title="home.viewGitHub"
                     data-tooltip="View my projects on GitHub"
                   >
                     <i class="fab fa-github"></i>
@@ -136,6 +150,7 @@
                     target="_blank"
                     class="social-link"
                     title="LinkedIn"
+                    data-i18n-title="home.connectLinkedIn"
                     data-tooltip="Connect with me on LinkedIn"
                   >
                     <i class="fab fa-linkedin"></i>
@@ -145,6 +160,7 @@
                     target="_blank"
                     class="social-link"
                     title="Resume"
+                    data-i18n-title="home.viewResume"
                     data-tooltip="View my resume"
                   >
                     <i class="fas fa-file-alt"></i>
@@ -156,26 +172,29 @@
               <button
                 class="action-button about-me-btn"
                 onclick="scrollToSection('about-me-section')"
+                data-i18n-title="nav.aboutMe"
                 data-tooltip="About Me"
               >
                 <i class="fas fa-user"></i>
-                <span>Get to Know Me</span>
+                <span data-i18n="home.getToKnowMe"></span>
               </button>
               <button
                 class="action-button work-btn"
                 onclick="scrollToSection('work-section')"
+                data-i18n-title="nav.myWork"
                 data-tooltip="My Work"
               >
                 <i class="fas fa-briefcase"></i>
-                <span>View My Work</span>
+                <span data-i18n="home.viewMyWork"></span>
               </button>
               <button
                 class="action-button contact-btn"
                 onclick="scrollToSection('contact-section')"
+                data-i18n-title="nav.contactMe"
                 data-tooltip="Contact Me"
               >
                 <i class="fas fa-envelope"></i>
-                <span>Contact Me</span>
+                <span data-i18n="home.contactMe"></span>
               </button>
             </div>
           </div>
@@ -184,6 +203,7 @@
           <button
             class="scroll-button"
             onclick="scrollToSection('about-me-section')"
+            data-i18n-title="home.nextPage"
             data-tooltip="Next Page"
           >
             <div class="scroll-arrow">
@@ -194,7 +214,7 @@
       </section>
       <section id="about-me-section">
         <div class="about-header">
-          <h1 class="about-me-title">About Me</h1>
+          <h1 class="about-me-title" data-i18n="about.title"></h1>
           <div class="profile-avatar">
             <img
               src="assets/photo.jpeg"
@@ -208,87 +228,60 @@
           <div class="content-card story-card">
             <div class="card-header">
               <i class="fas fa-book-open"></i>
-              <h3>Introduction</h3>
+              <h3 data-i18n="about.introduction"></h3>
             </div>
             <div class="card-content">
-              <p class="story-intro">
-                Hello! I'm <b>Bruce Wang</b>, a frontend engineer based in
-                Taipei, Taiwan. In 2022, I completed <b>App Academy</b>, an
-                intensive software engineering program. Today, I specialize in
-                building entrepreneurial products as a frontend engineer.
-              </p>
-              <p class="story-intro">
-                Being bilingual in <b>English</b> and <b>Mandarin Chinese</b>, I
-                am able to offer cross-cultural insights that enhance
-                communication and collaboration in global teams.
-              </p>
+              <p class="story-intro" data-i18n="about.introText1" data-i18n-html="true"></p>
+              <p class="story-intro" data-i18n="about.introText2" data-i18n-html="true"></p>
             </div>
           </div>
 
           <div class="content-card interests-card">
             <div class="card-header">
               <i class="fas fa-info-circle"></i>
-              <h3>More Details</h3>
+              <h3 data-i18n="about.moreDetails"></h3>
             </div>
             <div class="detail-categories">
               <button
                 class="detail-category-button"
                 onclick="showDetails('background')"
               >
-                <i class="fas fa-graduation-cap"></i> Background
+                <i class="fas fa-graduation-cap"></i> <span data-i18n="about.background"></span>
               </button>
               <button
                 class="detail-category-button"
                 onclick="showDetails('expertise')"
               >
-                <i class="fas fa-code"></i> Career
+                <i class="fas fa-code"></i> <span data-i18n="about.career"></span>
               </button>
               <button
                 class="detail-category-button"
                 onclick="showDetails('goals')"
               >
-                <i class="fas fa-bullseye"></i> Goals
+                <i class="fas fa-bullseye"></i> <span data-i18n="about.goals"></span>
               </button>
               <button
                 class="detail-category-button"
                 onclick="showDetails('interests')"
               >
-                <i class="fas fa-compass"></i> Interests
+                <i class="fas fa-compass"></i> <span data-i18n="about.interests"></span>
               </button>
             </div>
             <div class="card-content">
               <div class="details-grid">
                 <!-- Background Details -->
                 <div class="detail-category" data-category="background">
-                  <p>
-                    I began coding in university, where I took computer science
-                    classes and learned the fundamentals of programming
-                    language. In 2022, I decided to attend App Academy for
-                    immersive software engineering training.
-                    <br /><br />
-                    After graduating, I participated in volunteer work and
-                    hackathon projects to gain hands-on experience before
-                    landing my first developer job.
-                  </p>
+                  <p data-i18n="about.backgroundText"></p>
                 </div>
 
                 <!-- Expertise Details -->
                 <div class="detail-category" data-category="expertise">
-                  <p>
-                    Currently, I'm a Frontend Engineer at All Joint,
-                    specializing in modern frameworks like React and Vue.js to
-                    build e-commerce platforms and entrepreneurial products.
-                  </p>
+                  <p data-i18n="about.careerText"></p>
                 </div>
 
                 <!-- Goals Details -->
                 <div class="detail-category" data-category="goals">
-                  <p>
-                    In the future, in addition to improving my frontend skills,
-                    I aim to deepen my knowledge in AI model training and cloud
-                    computing, with the goal of building AI-powered products
-                    that contribute to our world.
-                  </p>
+                  <p data-i18n="about.goalsText"></p>
                 </div>
 
                 <!-- Interests Details -->
@@ -298,42 +291,36 @@
                       <div class="interest-icon">
                         <i class="fas fa-basketball-ball"></i>
                       </div>
-                      <h4>Basketball</h4>
+                      <h4 data-i18n="about.basketball"></h4>
                     </div>
-                    <p>Love playing basketball and following NBA games.</p>
+                    <p data-i18n="about.basketballDesc"></p>
                   </div>
                   <div class="interest-item">
                     <div class="interest-content">
                       <div class="interest-icon">
                         <i class="fas fa-book"></i>
                       </div>
-                      <h4>Reading</h4>
+                      <h4 data-i18n="about.reading"></h4>
                     </div>
-                    <p>
-                      Enjoy reading tech books, as well as thrilling and science
-                      fiction novels.
-                    </p>
+                    <p data-i18n="about.readingDesc"></p>
                   </div>
                   <div class="interest-item">
                     <div class="interest-content">
                       <div class="interest-icon">
                         <i class="fas fa-plane"></i>
                       </div>
-                      <h4>Traveling</h4>
+                      <h4 data-i18n="about.traveling"></h4>
                     </div>
-                    <p>
-                      Explore new cultures and cuisines, especially across East
-                      Asia.
-                    </p>
+                    <p data-i18n="about.travelingDesc"></p>
                   </div>
                   <div class="interest-item">
                     <div class="interest-content">
                       <div class="interest-icon">
                         <i class="fas fa-guitar"></i>
                       </div>
-                      <h4>Instruments</h4>
+                      <h4 data-i18n="about.instruments"></h4>
                     </div>
-                    <p>Play guitar and piano casually in my free time.</p>
+                    <p data-i18n="about.instrumentsDesc"></p>
                   </div>
                 </div>
               </div>
@@ -344,38 +331,38 @@
           <div class="content-card skills-card">
             <div class="card-header">
               <i class="fas fa-code"></i>
-              <h3>Technical Skills</h3>
+              <h3 data-i18n="about.technicalSkills"></h3>
             </div>
             <div class="skill-categories">
               <button
                 class="skill-category-button"
                 onclick="showSkills('frontend')"
               >
-                <i class="fas fa-laptop-code"></i> Frontend
+                <i class="fas fa-laptop-code"></i> <span data-i18n="about.frontend"></span>
               </button>
               <button
                 class="skill-category-button"
                 onclick="showSkills('devops')"
               >
-                <i class="fas fa-cloud"></i> DevOps
+                <i class="fas fa-cloud"></i> <span data-i18n="about.devops"></span>
               </button>
               <button
                 class="skill-category-button"
                 onclick="showSkills('tools')"
               >
-                <i class="fas fa-tools"></i> Tools
+                <i class="fas fa-tools"></i> <span data-i18n="about.tools"></span>
               </button>
               <button
                 class="skill-category-button"
                 onclick="showSkills('design')"
               >
-                <i class="fas fa-palette"></i> Design
+                <i class="fas fa-palette"></i> <span data-i18n="about.design"></span>
               </button>
               <button
                 class="skill-category-button"
                 onclick="showSkills('others')"
               >
-                <i class="fas fa-server"></i> Others
+                <i class="fas fa-server"></i> <span data-i18n="about.others"></span>
               </button>
             </div>
             <div class="card-content">
@@ -610,6 +597,7 @@
           <button
             class="scroll-button"
             onclick="scrollToSection('work-section')"
+            data-i18n-title="about.nextPage"
             data-tooltip="Next Page"
           >
             <div class="scroll-arrow">
@@ -621,8 +609,8 @@
 
       <section id="work-section">
         <div class="work-header">
-          <h1 class="work-title">My Work</h1>
-          <p class="work-subtitle">Experience & Projects</p>
+          <h1 class="work-title" data-i18n="work.title"></h1>
+          <p class="work-subtitle" data-i18n="work.subtitle"></p>
         </div>
 
         <div class="work-content">
@@ -630,45 +618,28 @@
           <div class="work-section-card experience-card">
             <div class="work-card-header">
               <i class="fas fa-briefcase"></i>
-              <h3>Experience</h3>
+              <h3 data-i18n="work.experience"></h3>
             </div>
             <div class="work-card-content">
               <div class="experience-item">
                 <div class="experience-header">
                   <div class="experience-title">
-                    <h4>Frontend Software Engineer (Remote)</h4>
-                    <span class="company">All Joint</span>
+                    <h4 data-i18n="work.frontendSoftwareEngineer"></h4>
+                    <span class="company" data-i18n="work.allJoint"></span>
                   </div>
                   <div class="experience-period">
-                    <span class="date">2024/04 ~ Present</span>
-                    <span class="location">Taipei, Taiwan</span>
+                    <span class="date" data-i18n="work.dateRange1"></span>
+                    <span class="location" data-i18n="work.location1"></span>
                   </div>
                 </div>
                 <div class="experience-description">
                   <ul>
-                    <li>
-                      Developed e-commerce platforms with frontend frameworks,
-                      Vue.js and Nuxt.js.
-                    </li>
-                    <li>
-                      Followed the Figma Blueprint to build the frontend layout
-                      and reusable UI components.
-                    </li>
-                    <li>
-                      Utilized Ant Design and Vanilla CSS to build and create
-                      responsive designs.
-                    </li>
-                    <li>
-                      Collaborated with project manager and backend engineer
-                      team to deliver entrepreneurial products
-                    </li>
-                    <li>
-                      Maintained and updated ongoing educational platform.
-                    </li>
-                    <li>
-                      Utilized Docker to containerize the applications and
-                      deploy them to cloud services.
-                    </li>
+                    <li data-i18n="work.exp1_1"></li>
+                    <li data-i18n="work.exp1_2"></li>
+                    <li data-i18n="work.exp1_3"></li>
+                    <li data-i18n="work.exp1_4"></li>
+                    <li data-i18n="work.exp1_5"></li>
+                    <li data-i18n="work.exp1_6"></li>
                   </ul>
                 </div>
                 <div class="experience-tech">
@@ -686,32 +657,20 @@
               <div class="experience-item">
                 <div class="experience-header">
                   <div class="experience-title">
-                    <h4>Software Engineering Program</h4>
-                    <span class="company">App Academy</span>
+                    <h4 data-i18n="work.softwareEngineeringProgram"></h4>
+                    <span class="company" data-i18n="work.appAcademy"></span>
                   </div>
                   <div class="experience-period">
-                    <span class="date">2023/10 ~ 2023/06</span>
-                    <span class="location">Online</span>
+                    <span class="date" data-i18n="work.dateRange2"></span>
+                    <span class="location" data-i18n="work.location2"></span>
                   </div>
                 </div>
                 <div class="experience-description">
                   <ul>
-                    <li>
-                      Accomplished intensive software engineering program in 28
-                      weeks.
-                    </li>
-                    <li>
-                      Acquired fundamental knowledge of modern software
-                      engineering principles and practices.
-                    </li>
-                    <li>
-                      Learned to build full stack applications using JavaScript,
-                      React, and Node.js
-                    </li>
-                    <li>
-                      Participated in hackathons and collaborative coding
-                      projects
-                    </li>
+                    <li data-i18n="work.exp2_1"></li>
+                    <li data-i18n="work.exp2_2"></li>
+                    <li data-i18n="work.exp2_3"></li>
+                    <li data-i18n="work.exp2_4"></li>
                   </ul>
                 </div>
                 <div class="experience-tech">
@@ -729,13 +688,13 @@
           <div class="work-section-card projects-card">
             <div class="work-card-header">
               <i class="fas fa-code"></i>
-              <h3>Featured Projects</h3>
+              <h3 data-i18n="work.featuredProjects"></h3>
             </div>
             <div class="work-card-content">
               <div class="project-item">
                 <div class="project-header">
                   <div class="project-title">
-                    <h4>Interactive Portfolio</h4>
+                    <h4 data-i18n="work.interactivePortfolio"></h4>
                   </div>
                   <div class="project-links">
                     <a
@@ -756,25 +715,9 @@
                 </div>
                 <div class="project-description">
                   <ul>
-                    <li>
-                      An interactive portfolio that showcases my skills and
-                      experience in modern web development through
-                      <b
-                        >3D graphics, smooth animations, and responsive
-                        design</b
-                      >
-                    </li>
-                    <li>
-                      Built with <b>vanilla HTML5, CSS3, and JavaScript</b> for
-                      optimal performance, incorporating advanced CSS
-                      animations, particle effects, and smooth scrolling
-                      transitions
-                    </li>
-                    <li>
-                      Deployed on <b>AWS cloud infrastructure</b> using S3 for
-                      storage, Lambda functions for backend processing, and API
-                      Gateway for seamless communication
-                    </li>
+                    <li data-i18n="work.portfolioDesc1" data-i18n-html="true"></li>
+                    <li data-i18n="work.portfolioDesc2" data-i18n-html="true"></li>
+                    <li data-i18n="work.portfolioDesc3" data-i18n-html="true"></li>
                   </ul>
                 </div>
                 <div class="project-tech">
@@ -789,7 +732,7 @@
               <div class="project-item">
                 <div class="project-header">
                   <div class="project-title">
-                    <h4>Video Game Center</h4>
+                    <h4 data-i18n="work.videoGameCenter"></h4>
                   </div>
                   <div class="project-links">
                     <a
@@ -810,21 +753,9 @@
                 </div>
                 <div class="project-description">
                   <ul>
-                    <li>
-                      Engaged in comprehensive video game information, a
-                      resourceful database for every game enthusiast
-                    </li>
-                    <li>
-                      Expertly orchestrated data fetching using
-                      <b>React Query</b>, demonstrating mastery of modern
-                      front-end development practices
-                    </li>
-                    <li>
-                      Incorporated <b>Chakra UI</b> to enhance visual appeal and
-                      streamline the application development process,
-                      contributing to a more polished and responsive user
-                      interface
-                    </li>
+                    <li data-i18n="work.gameCenterDesc1"></li>
+                    <li data-i18n="work.gameCenterDesc2" data-i18n-html="true"></li>
+                    <li data-i18n="work.gameCenterDesc3" data-i18n-html="true"></li>
                   </ul>
                 </div>
                 <div class="project-tech">
@@ -837,6 +768,44 @@
                   <span class="tech-tag">Chakra UI</span>
                 </div>
               </div>
+
+              <div class="project-item">
+                <div class="project-header">
+                  <div class="project-title">
+                    <h4 data-i18n="work.aiTaskSystem"></h4>
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="https://github.com/Wang55566/ai-coding-project"
+                      target="_blank"
+                      class="project-link"
+                    >
+                      <i class="fab fa-github"></i>
+                    </a>
+                    <a
+                      href="https://ai-coding-project-kappa.vercel.app/"
+                      class="project-link"
+                      target="_blank"
+                    >
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="project-description">
+                  <ul>
+                    <li data-i18n="work.aiTaskSystemDesc1"></li>
+                    <li data-i18n="work.aiTaskSystemDesc2" data-i18n-html="true"></li>
+                    <li data-i18n="work.aiTaskSystemDesc3" data-i18n-html="true"></li>
+                  </ul>
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">OpenAI API</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -844,6 +813,7 @@
           <button
             class="scroll-button"
             onclick="scrollToSection('contact-section')"
+            data-i18n-title="work.nextPage"
             data-tooltip="Next Page"
           >
             <div class="scroll-arrow">
@@ -854,8 +824,8 @@
       </section>
       <section id="contact-section">
         <div class="contact-header">
-          <h1 class="contact-title">Get In Touch</h1>
-          <p class="contact-subtitle">Reach Out Anytime !!</p>
+          <h1 class="contact-title" data-i18n="contact.title"></h1>
+          <p class="contact-subtitle" data-i18n="contact.subtitle"></p>
         </div>
 
         <div class="contact-flex">
@@ -863,7 +833,7 @@
             <div class="contact-info">
               <div class="contact-info-title">
                 <i class="fas fa-address-card"></i>
-                <div>Contact Information</div>
+                <div data-i18n="contact.contactInformation"></div>
               </div>
               <div class="contact-info-content">
                 <div class="contact-info-item">
@@ -886,7 +856,7 @@
             <div class="contact-social">
               <div class="contact-social-title">
                 <i class="fas fa-handshake"></i>
-                <div>Social Links</div>
+                <div data-i18n="contact.socialLinks"></div>
               </div>
               <div class="contact-social-content">
                 <a
@@ -921,19 +891,20 @@
           <form class="contact-form" id="contactForm">
             <div class="form-header">
               <i class="fas fa-paper-plane"></i>
-              <h3>Send Me a Message</h3>
+              <h3 data-i18n="contact.sendMessage"></h3>
             </div>
 
             <div class="form-grid">
               <div class="form-group">
                 <label for="name">
                   <i class="fas fa-user"></i>
-                  Name
+                  <span data-i18n="contact.name"></span>
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  data-i18n-placeholder="contact.namePlaceholder"
                   placeholder="Enter your name"
                   required
                 />
@@ -942,12 +913,13 @@
               <div class="form-group">
                 <label for="email">
                   <i class="fas fa-envelope"></i>
-                  Email
+                  <span data-i18n="contact.email"></span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
+                  data-i18n-placeholder="contact.emailPlaceholder"
                   placeholder="Optional"
                 />
               </div>
@@ -956,12 +928,13 @@
             <div class="form-group">
               <label for="phone">
                 <i class="fas fa-phone"></i>
-                Phone
+                <span data-i18n="contact.phone"></span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
+                data-i18n-placeholder="contact.phonePlaceholder"
                 placeholder="Optional"
               />
             </div>
@@ -969,11 +942,12 @@
             <div class="form-group">
               <label for="message">
                 <i class="fas fa-comment"></i>
-                Message
+                <span data-i18n="contact.message"></span>
               </label>
               <textarea
                 id="message"
                 name="message"
+                data-i18n-placeholder="contact.messagePlaceholder"
                 placeholder="Tell me what's in your mind..."
                 value="message"
                 rows="4"
@@ -983,14 +957,14 @@
 
             <button type="submit" class="submit-btn">
               <i class="fas fa-paper-plane"></i>
-              <span>Send Message</span>
+              <span data-i18n="contact.sendButton"></span>
             </button>
           </form>
         </div>
       </section>
       <div id="loading-indicator">
         <i class="fas fa-spinner fa-spin"></i>
-        <p>BACKGROUND LOADING...</p>
+        <p data-i18n="loading.backgroundLoading"></p>
       </div>
     </div>
 
@@ -998,6 +972,8 @@
       <source src="/assets/music.mp3" type="audio/mp3" />
     </audio>
 
+    <!-- i18n -->
+    <script type="module" src="i18n/index.js"></script>
     <script type="module" src="main.js"></script>
     <!-- Google Analytics -->
     <script type="module" src="ga.js"></script>
