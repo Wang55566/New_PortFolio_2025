@@ -88,15 +88,23 @@ class I18n {
   // Load translation files
   async loadTranslations() {
     try {
-      // Use vite-ignore for dynamic imports as Vite cannot statically analyze variable imports
-      // Try relative path first (works in local dev), then absolute path (works in production)
-      let langModule;
-      try {
-        langModule = await import(/* @vite-ignore */ `./${this.currentLang}.js`);
-      } catch (relativeError) {
-        // Fallback to absolute path for production environment
-        langModule = await import(/* @vite-ignore */ `/i18n/${this.currentLang}.js`);
+      // Pre-load translation modules using import.meta.glob so Vite can properly handle them
+      // This ensures correct paths in both development and production
+      // Only load language files (en.js, zh-TW.js), exclude index.js
+      const translationModules = import.meta.glob('./{en,zh-TW}.js', { eager: false });
+      
+      // Map language codes to module paths
+      const langMap = {
+        'en': './en.js',
+        'zh-TW': './zh-TW.js'
+      };
+      
+      const modulePath = langMap[this.currentLang];
+      if (!modulePath || !translationModules[modulePath]) {
+        throw new Error(`Translation module not found for language: ${this.currentLang}`);
       }
+      
+      const langModule = await translationModules[modulePath]();
       this.translations = langModule.default || langModule;
       if (!this.translations || Object.keys(this.translations).length === 0) {
         throw new Error('Translations object is empty');
@@ -107,13 +115,9 @@ class I18n {
       if (this.currentLang !== 'zh-TW') {
         try {
           this.currentLang = 'zh-TW';
-          let langModule;
-          try {
-            langModule = await import('./zh-TW.js');
-          } catch (relativeError) {
-            langModule = await import('/i18n/zh-TW.js');
-          }
-          this.translations = langModule.default || langModule;
+          const translationModules = import.meta.glob('./{en,zh-TW}.js', { eager: false });
+          const fallbackModule = await translationModules['./zh-TW.js']();
+          this.translations = fallbackModule.default || fallbackModule;
           if (!this.translations || Object.keys(this.translations).length === 0) {
             throw new Error('Traditional Chinese translations also failed');
           }
