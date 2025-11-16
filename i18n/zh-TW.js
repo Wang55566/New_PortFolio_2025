@@ -17,7 +17,7 @@ export default {
     home: "首頁",
     aboutMe: "關於我",
     myWork: "我的作品",
-    contactMe: "我的聯繫方式"
+    contactMe: "聯繫方式"
   },
 
   // Home section
@@ -40,7 +40,7 @@ export default {
     title: "關於我",
     introduction: "簡介",
     introText1: "你好！我是 <b>王笙奎（Bruce）</b>，一位現居台北的前端工程師；於 2023 年，參與了 <b>App Academy</b> 的軟體工程課程。如今，我專注於前端技術的精進和實務經驗的累積。",
-    introText2: "另外，我精通 <b>英文</b>，擁有多年海外的經歷，能夠提供跨文化見解，增強全球團隊的溝通與協作。",
+    introText2: "另外，我精通 <b>英文</b>，擁有多年海外的經歷，能夠提供跨文化見解，增進全球團隊的溝通與協作。",
     moreDetails: "更多詳情",
     background: "背景",
     career: "職涯",
@@ -57,7 +57,7 @@ export default {
     travelingDesc: "在世界各地探索新文化和美食。",
     instruments: "樂器",
     instrumentsDesc: "在空閒時間偶爾會彈奏吉他和鋼琴。",
-    technicalSkills: "技術技能",
+    technicalSkills: "專業技能",
     frontend: "前端",
     devops: "DevOps",
     tools: "工具",
@@ -82,6 +82,7 @@ export default {
     exp1_4: "與專案經理和後端工程師團隊協作，交付產品",
     exp1_5: "維護和更新持續進行的數位教育平台服務。",
     exp1_6: "使用 Docker 將應用程式容器化並部署到雲端服務。",
+    exp1_7: "為電商平台實作 <b>i18n（國際化）</b> 解決方案，支援多語言並提升使用者體驗",
     softwareEngineeringProgram: "軟體工程課程",
     appAcademy: "App Academy",
     dateRange2: "2022/10 ~ 2023/06",
@@ -89,11 +90,12 @@ export default {
     exp2_1: "在 28 週內完成密集的軟體工程課程。",
     exp2_2: "學習現代軟體工程和其實務的基礎知識。",
     exp2_3: "學習使用 JavaScript、React 和 Node.js 建構全端應用程式",
-    exp2_4: "參與線上和線下協作編碼專案，增強實務經驗",
+    exp2_4: "參與線上和線下協作編碼專案，強化實務經驗",
     interactivePortfolio: "互動式作品集",
     portfolioDesc1: "一個互動式作品集，透過 <b>3D 圖形、流暢動畫和響應式設計</b> 展示我在現代網頁開發的技能和經驗",
     portfolioDesc2: "使用 <b>原生 HTML5、CSS3 和 JavaScript</b> 建構，結合進階 CSS 動畫、粒子效果和流暢的滾動轉場效果",
     portfolioDesc3: "部署在 <b>AWS 雲端基礎設施</b> 上，使用 S3 進行儲存，Lambda 函數進行後端處理，API Gateway 進行 API 通訊",
+    portfolioDesc4: "整合 <b>自訂 i18n 系統</b>，具備自動語言偵測和手動語言切換功能，支援英文和繁體中文",
     videoGameCenter: "電玩資訊中心",
     gameCenterDesc1: "提供全方位的電玩資訊，為每位遊戲愛好者提供豐富的資料庫",
     gameCenterDesc2: "熟練運用 API 獲取工具，如 <b>React Query</b> 進行後端的資料獲取，展現現代前端開發實務的掌握",
@@ -107,8 +109,8 @@ export default {
 
   // Contact section
   contact: {
-    title: "聯絡我",
-    subtitle: "隨時歡迎聯繫！！",
+    title: "聯繫方式",
+    subtitle: "隨時歡迎找我聊聊！！",
     contactInformation: "聯絡資訊",
     socialLinks: "社群連結",
     sendMessage: "發送訊息給我",
