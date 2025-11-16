@@ -154,8 +154,9 @@ class I18n {
       return;
     }
 
+    const previousLang = this.currentLang;
+    
     try {
-      const previousLang = this.currentLang;
       this.currentLang = lang;
       localStorage.setItem('portfolio-lang', lang);
       
@@ -168,6 +169,11 @@ class I18n {
         // Revert to previous language
         this.currentLang = previousLang;
         await this.loadTranslations();
+        // Ensure DOM is updated after revert
+        document.documentElement.lang = previousLang;
+        this.updatePage();
+        // Trigger event to notify other modules of revert
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: previousLang } }));
         return;
       }
       
@@ -181,7 +187,16 @@ class I18n {
       window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
     } catch (error) {
       console.error('Error changing language:', error);
-      // Optionally revert or show error message
+      // Try to revert to previous language
+      try {
+        this.currentLang = previousLang;
+        await this.loadTranslations();
+        document.documentElement.lang = previousLang;
+        this.updatePage();
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: previousLang } }));
+      } catch (revertError) {
+        console.error('Failed to revert language:', revertError);
+      }
     }
   }
 

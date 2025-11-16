@@ -71,7 +71,7 @@ export default {
     title: "我的作品",
     subtitle: "經驗與專案",
     experience: "工作經驗",
-    featuredProjects: "精選專案",
+    featuredProjects: "個人專案作品",
     frontendSoftwareEngineer: "前端軟體工程師（遠端）",
     allJoint: "傲嬌文創",
     dateRange1: "2024/04 ~ 現在",

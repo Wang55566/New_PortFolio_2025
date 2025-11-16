@@ -260,22 +260,23 @@ window.toggleMusic = () => {
     audioPlayer.play().catch((error) => {
       console.log("Audio play failed:", error);
       // Fallback: try to play on user interaction
-      document.addEventListener(
-        "click",
-        function playOnClick() {
-          audioPlayer
-            .play()
-            .then(() => {
-              musicButton.classList.add("playing");
-              musicButton.innerHTML =
-                '<i class="fas fa-volume-mute fa-lg"></i>';
-              isMusicPlaying = true;
-            })
-            .catch((err) => console.log("Audio play still failed:", err));
-          document.removeEventListener("click", playOnClick);
-        },
-        { once: true }
-      );
+      const playOnClick = () => {
+        audioPlayer
+          .play()
+          .then(() => {
+            musicButton.classList.add("playing");
+            musicButton.innerHTML =
+              '<i class="fas fa-volume-mute fa-lg"></i>';
+            isMusicPlaying = true;
+            document.removeEventListener("click", playOnClick);
+          })
+          .catch((err) => {
+            console.log("Audio play still failed:", err);
+            // Ensure event listener is removed even if play fails
+            document.removeEventListener("click", playOnClick);
+          });
+      };
+      document.addEventListener("click", playOnClick, { once: true });
     });
 
     if (audioPlayer.readyState >= 2) {
