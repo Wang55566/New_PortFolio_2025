@@ -10,7 +10,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
   background: transparent;
   overflow-x: hidden;
 }
@@ -55,14 +55,13 @@ nav {
 }
 
 #title {
-  font-size: 30px;
   font-weight: 800;
   letter-spacing: 1px;
   background: linear-gradient(135deg, #2c3e50, #3498db);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
   transition: all 0.3s ease;
   cursor: default;
 }
@@ -122,7 +121,6 @@ nav button:hover::after {
 
 /* Home Page Welcome Text */
 #welcome-text {
-  font-family: "Pacifico", "Playfair Display", cursive, serif;
   font-size: 45px;
   color: #e52e71;
   font-weight: 700;
@@ -135,13 +133,30 @@ nav button:hover::after {
   animation-fill-mode: forwards;
 }
 
+/* Chinese: Use Nunito */
+html:lang(zh-TW) #welcome-text {
+  font-family: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* English: Use original fonts */
+html:lang(en) #welcome-text {
+  font-family: "Pacifico", "Playfair Display", cursive, serif;
+}
+
 /* Music */
-.music-button {
+.music-button,
+.language-button {
   animation: music 2s infinite;
 }
 
 .music-button.playing {
   color: #e74c3c;
+}
+
+.language-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
 
 @keyframes music {
