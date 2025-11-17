@@ -96,6 +96,7 @@ export default {
     portfolioDesc2: "Built with <b>vanilla HTML5, CSS3, and JavaScript</b> for optimal performance, incorporating advanced CSS animations, particle effects, and smooth scrolling transitions",
     portfolioDesc3: "Deployed on <b>AWS cloud infrastructure</b> using S3 for storage, Lambda functions for backend processing, and API Gateway for seamless communication",
     portfolioDesc4: "Integrated <b>custom i18n system</b> with automatic language detection and manual language toggle, supporting English and Traditional Chinese",
+    portfolioDesc5: "Integrated <b>Google Analytics</b> to track user behavior, page views, and engagement metrics for data-driven optimization",
     videoGameCenter: "Video Game Center",
     gameCenterDesc1: "Engaged in comprehensive video game information, a resourceful database for every game enthusiast",
     gameCenterDesc2: "Expertly orchestrated data fetching using API fetching tools such as <b>React Query</b>, demonstrating mastery of modern front-end development practices",

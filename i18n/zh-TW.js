@@ -96,6 +96,7 @@ export default {
     portfolioDesc2: "使用 <b>原生 HTML5、CSS3 和 JavaScript</b> 建構，結合進階 CSS 動畫、粒子效果和流暢的滾動轉場效果",
     portfolioDesc3: "部署在 <b>AWS 雲端基礎設施</b> 上，使用 S3 進行儲存，Lambda 函數進行後端處理，API Gateway 進行 API 通訊",
     portfolioDesc4: "整合 <b>自訂 i18n 系統</b>，具備自動語言偵測和手動語言切換功能，支援英文和繁體中文",
+    portfolioDesc5: "整合 <b>Google Analytics</b> 追蹤使用者行為、頁面瀏覽量和互動指標，以數據驅動優化",
     videoGameCenter: "電玩資訊中心",
     gameCenterDesc1: "提供全方位的電玩資訊，為每位遊戲愛好者提供豐富的資料庫",
     gameCenterDesc2: "熟練運用 API 獲取工具，如 <b>React Query</b> 進行後端的資料獲取，展現現代前端開發實務的掌握",
