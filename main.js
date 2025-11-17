@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import getI18n from "./i18n";
 
@@ -59,9 +60,14 @@ function initThreeJS() {
   // Load both models
   const loader = new GLTFLoader();
 
+  // 配置 DRACOLoader
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+  loader.setDRACOLoader(dracoLoader);
+
   // Load living room from S3
   loader.load(
-    "https://seng-portfolio-bucket.s3.us-west-1.amazonaws.com/living_room.glb",
+    "https://seng-portfolio-bucket.s3.us-west-1.amazonaws.com/living_room_out_draco.glb",
     (gltf) => {
       const livingRoom = gltf.scene;
       livingRoom.traverse((child) => {
