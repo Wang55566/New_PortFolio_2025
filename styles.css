@@ -186,6 +186,11 @@ html:lang(en) #welcome-text {
     #0f3460 75%,
     #1e3a8a 100%
   );
+  cursor: grab;
+}
+
+#home-section:active {
+  cursor: grabbing;
 }
 
 .particles-container {
