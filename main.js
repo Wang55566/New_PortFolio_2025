@@ -112,6 +112,105 @@ window.scrollToSection = (sectionId) => {
   section.scrollIntoView({ behavior: "smooth" });
 };
 
+const ABOUT_CAROUSEL_INTERVAL_MS = 5000;
+let aboutCarouselTimer = null;
+
+function getAboutCarousel() {
+  return document.getElementById("about-carousel");
+}
+
+function getAboutCarouselCards(el) {
+  return el ? Array.from(el.querySelectorAll(".content-card")) : [];
+}
+
+function getAboutCarouselIndex(el) {
+  const cards = getAboutCarouselCards(el);
+  if (cards.length === 0) return 0;
+  const center = el.scrollLeft + el.clientWidth / 2;
+  for (let i = 0; i < cards.length; i++) {
+    const cardLeft = cards[i].offsetLeft;
+    const cardRight = cardLeft + cards[i].offsetWidth;
+    if (center >= cardLeft && center < cardRight) return i;
+  }
+  return 0;
+}
+
+function updateAboutCarouselButtons(index) {
+  const el = getAboutCarousel();
+  if (!el) return;
+  const outer = el.closest(".about-carousel-outer");
+  if (!outer) return;
+  const i = index !== undefined ? index : getAboutCarouselIndex(el);
+  const n = getAboutCarouselCards(el).length;
+  outer.classList.toggle("hide-prev", n <= 1 || i <= 0);
+  outer.classList.toggle("hide-next", n <= 1 || i >= n - 1);
+}
+
+function scrollAboutCarouselToIndex(index) {
+  const el = getAboutCarousel();
+  if (!el) return;
+  const cards = getAboutCarouselCards(el);
+  if (index < 0 || index >= cards.length) return;
+  const target = cards[index];
+  const maxScroll = el.scrollWidth - el.clientWidth;
+  const left = target.offsetLeft - (el.clientWidth - target.offsetWidth) / 2;
+  const clampedLeft = Math.max(0, Math.min(maxScroll, left));
+  el.scrollTo({ left: clampedLeft, behavior: "smooth" });
+  updateAboutCarouselButtons(index);
+  resetAboutCarouselTimer();
+}
+
+function goAboutCarouselPrev() {
+  const el = getAboutCarousel();
+  if (!el) return;
+  const cards = getAboutCarouselCards(el);
+  const current = getAboutCarouselIndex(el);
+  const prev = (current - 1 + cards.length) % cards.length;
+  scrollAboutCarouselToIndex(prev);
+}
+
+function goAboutCarouselNext() {
+  const el = getAboutCarousel();
+  if (!el) return;
+  const cards = getAboutCarouselCards(el);
+  const current = getAboutCarouselIndex(el);
+  const next = (current + 1) % cards.length;
+  scrollAboutCarouselToIndex(next);
+}
+
+function resetAboutCarouselTimer() {
+  if (aboutCarouselTimer) clearInterval(aboutCarouselTimer);
+  aboutCarouselTimer = setInterval(goAboutCarouselNext, ABOUT_CAROUSEL_INTERVAL_MS);
+}
+
+function startAboutCarouselAutoPlay() {
+  const el = getAboutCarousel();
+  if (!el || getAboutCarouselCards(el).length <= 1) return;
+  updateAboutCarouselButtons();
+  resetAboutCarouselTimer();
+  let scrollRestartTimer = null;
+  el.addEventListener(
+    "scroll",
+    () => {
+      updateAboutCarouselButtons();
+      if (aboutCarouselTimer) clearInterval(aboutCarouselTimer);
+      aboutCarouselTimer = null;
+      if (scrollRestartTimer) clearTimeout(scrollRestartTimer);
+      scrollRestartTimer = setTimeout(resetAboutCarouselTimer, 400);
+    },
+    { passive: true }
+  );
+}
+
+window.aboutCarouselPrev = goAboutCarouselPrev;
+window.aboutCarouselNext = goAboutCarouselNext;
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startAboutCarouselAutoPlay);
+} else {
+  startAboutCarouselAutoPlay();
+}
+
 initThreeJS();
 
 // Particle system

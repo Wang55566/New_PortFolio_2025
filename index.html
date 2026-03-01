@@ -40,7 +40,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Pacifico&family=Playfair+Display:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Pacifico&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
     <!-- Preload 3D model for faster loading -->
@@ -225,8 +225,12 @@
           </div>
         </div>
 
-        <div class="about-content">
-          <div class="content-card story-card">
+        <div class="about-carousel-outer">
+          <button type="button" class="about-carousel-btn about-carousel-prev" aria-label="Previous" onclick="aboutCarouselPrev()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="about-content" id="about-carousel">
+            <div class="content-card story-card">
             <div class="card-header">
               <i class="fas fa-book-open"></i>
               <h3 data-i18n="about.introduction"></h3>
@@ -455,7 +459,7 @@
                     </div>
                   </div>
                   <div class="skill-item">
-                    <span class="skill-name">GitHub Actions</span>
+                    <span class="skill-name">CI/CD pipeline</span>
                     <div class="star-rating">
                       <i class="fas fa-star filled"></i>
                       <i class="fas fa-star filled"></i>
@@ -509,16 +513,6 @@
                       <i class="far fa-star"></i>
                     </div>
                   </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Google Analytics</span>
-                    <div class="star-rating">
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -535,7 +529,7 @@
                     </div>
                   </div>
                   <div class="skill-item">
-                    <span class="skill-name">Responsive Design</span>
+                    <span class="skill-name">Responsive Web Design(RWD)</span>
                     <div class="star-rating">
                       <i class="fas fa-star filled"></i>
                       <i class="fas fa-star filled"></i>
@@ -599,20 +593,14 @@
                       <i class="far fa-star"></i>
                     </div>
                   </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Python</span>
-                    <div class="star-rating">
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+          </div>
+          <button type="button" class="about-carousel-btn about-carousel-next" aria-label="Next" onclick="aboutCarouselNext()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
         <div class="scroll-indicator">
           <button
@@ -663,6 +651,23 @@
                     <li data-i18n="work.exp1_6"></li>
                     <li data-i18n="work.exp1_7" data-i18n-html="true"></li>
                   </ul>
+                </div>
+                <div class="participating-projects">
+                  <h5 class="participating-projects-title" data-i18n="work.participatingProjects"></h5>
+                  <div class="participating-project">
+                    <a href="https://kokokara.co/" target="_blank" rel="noopener noreferrer" class="participating-project-link" aria-label="Kokokara">
+                      <strong data-i18n="work.kokokara"></strong>
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <p data-i18n="work.kokokaraDesc"></p>
+                  </div>
+                  <div class="participating-project">
+                    <a href="https://learning.wisdomhall.com.tw/" target="_blank" rel="noopener noreferrer" class="participating-project-link" aria-label="品學堂">
+                      <strong data-i18n="work.pinxue"></strong>
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <p data-i18n="work.pinxueDesc"></p>
+                  </div>
                 </div>
                 <div class="experience-tech">
                   <span class="tech-tag">JavaScript</span>
