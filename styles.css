@@ -752,7 +752,7 @@ html:lang(en) #welcome-text {
 /* 輪播：卡片固定寬度，前後留白讓每次只顯示一張且置中 */
 .about-content {
   --about-card-w: min(750px, 85vw);
-  --about-card-gap: 500px; /* 卡片與卡片之間的間隔 */
+  --about-card-gap: max(24px, calc((100vw - 112px - var(--about-card-w)) / 2 + 48px));
   display: flex;
   gap: var(--about-card-gap);
   overflow-x: auto;
@@ -1924,6 +1924,7 @@ html:lang(en) #welcome-text {
     padding-left: 40px;
     padding-right: 40px;
     --about-card-w: min(650px, 72vw);
+    --about-card-gap: max(24px, calc((100vw - 80px - var(--about-card-w)) / 2 + 48px));
   }
 
   .about-content::before,
@@ -1937,6 +1938,27 @@ html:lang(en) #welcome-text {
 
   .about-carousel-next {
     right: max(32px, 4vw);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about-content {
+    padding-left: 64px;
+    padding-right: 64px;
+    --about-card-gap: max(24px, calc((100vw - 128px - var(--about-card-w)) / 2 + 32px));
+  }
+
+  .about-content::before,
+  .about-content::after {
+    flex: 0 0 calc((100% - 128px - var(--about-card-w)) / 2);
+  }
+
+  .about-carousel-prev {
+    left: 12px;
+  }
+
+  .about-carousel-next {
+    right: 12px;
   }
 }
 
@@ -1969,6 +1991,7 @@ html:lang(en) #welcome-text {
   .about-content {
     padding-left: 44px;
     padding-right: 44px;
+    --about-card-gap: max(24px, calc((100vw - 88px - var(--about-card-w)) / 2 + 32px));
   }
 
   .about-content::before,
@@ -2069,6 +2092,7 @@ html:lang(en) #welcome-text {
     padding-left: 20px;
     padding-right: 20px;
     --about-card-w: min(750px, calc(100vw - 40px));
+    --about-card-gap: max(24px, calc((100vw - 40px - var(--about-card-w)) / 2 + 24px));
   }
 
   .about-content::before,
